@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-// import { Http } from '@angular/http';
-import { AppSettings } from './AppSettings';
+import { AppSettings } from '../AppSettings';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import { stringify } from 'querystring';
 @Injectable()
-export class LoginService {
+export class RegisterUserService {
 
   constructor(private http: Http) { }
 
@@ -12,7 +11,7 @@ export class LoginService {
     let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
     let options = new RequestOptions({ headers: headers, method: "post"});
 
-    return this.http.post(AppSettings.API_ENDPOINT + '/home/login/register.php', formData, options)
+    return this.http.post(AppSettings.API_ENDPOINT + '/home/register/register-user.php', formData, options)
     .toPromise()
     .then(res => res.text())
   }

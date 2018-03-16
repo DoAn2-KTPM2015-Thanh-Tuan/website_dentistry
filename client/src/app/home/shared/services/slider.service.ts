@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
-import { AppSettings } from './AppSettings';
+import { AppSettings } from '../AppSettings';
 import { Observable } from 'rxjs/Observable';
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NewsCategorysService } from '../../../../service/news-categorys.service';
-import { EscapeHtmlPipe } from '../../../../pipes/keep-html.pipe';
+import { NewsCategorysService } from '../../../../shared/services/news-categorys.service';
+import { EscapeHtmlPipe } from '../../../../shared/pipes/keep-html.pipe';
 
 @Component({
   selector: 'app-news',

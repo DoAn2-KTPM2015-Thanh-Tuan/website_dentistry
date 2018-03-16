@@ -8,9 +8,9 @@
         $formData->id_position = null;
     }
 
-    // gán type_acount nếu rỗng
+    // gán type_acount nếu rỗng (4 : người dùng thấp nhất)
     if(!isset($formData->type_acount)){
-        $formData->type_account = 3;
+        $formData->type_account = 4;
     }
     // gán image_user nếu rỗng
     if(!isset($formData->image_user)){
@@ -26,4 +26,3 @@
                 $formData->address,
                 $formData->image_user,
                 $formData->type_account);
-    // echo json_encode($formData);

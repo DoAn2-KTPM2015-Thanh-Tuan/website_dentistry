@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsCategorysService } from '../../../service/news-categorys.service';
-import { News } from './news.model';
+import { NewsCategorysService } from '../../../shared/services/news-categorys.service';
+import { News } from '../../../shared/models/news.model';
 
 @Component({
   selector: 'app-news-categorys',
@@ -19,8 +19,6 @@ export class NewsCategorysComponent implements OnInit {
         this.list_newsCategorys = res;
       }
     )
-
-    
   }
   
   ngOnInit() {

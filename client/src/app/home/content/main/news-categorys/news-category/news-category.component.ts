@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NewsCategorysService } from '../../../../service/news-categorys.service';
+import { NewsCategorysService } from '../../../../shared/services/news-categorys.service';
 
 @Component({
   selector: 'app-news-category',

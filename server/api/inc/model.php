@@ -68,12 +68,13 @@ function insertUser($name, $password, $id_position, $account, $phone, $email, $a
     $stmt->closeCursor();
     return $result;
 }   
-// echo insertUser('tuankg1028', '123123123', null, 'tuan', '0127', 'asdas', '1028ntt', null, 0);
+
+// kiểm tra tài khoản có tồn tại không (khi tạo tài khoản)
 function check_exist_account($name_account){
     $db =  Database::db_close();
     $db = Database::connect();
     
-$query = "SELECT * FROM tb_account WHERE name_account = :name_account";
+    $query = "SELECT * FROM tb_account WHERE name_account = :name_account";
     $stmt = $db->prepare($query);
     $stmt->bindParam(':name_account', $name_account, PDO::PARAM_STR);
     $stmt->execute();
@@ -81,4 +82,22 @@ $query = "SELECT * FROM tb_account WHERE name_account = :name_account";
     $stmt->closeCursor();
     return $result;
 }
+
+function check_login($name_account, $password){
+    $db =  Database::db_close();
+    $db = Database::connect();
+    
+    $query = "SELECT * FROM tb_account WHERE name_account = :name_account && pass_account = :pass_account ";
+    $stmt = $db->prepare($query);
+    
+    $stmt->bindParam(':name_account', $name_account, PDO::PARAM_STR);
+    $stmt->bindParam(':pass_account', $password, PDO::PARAM_STR);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $result;
+}
+// print_r(check_login('tuankg1028', '123123'));
+
+
 ?>

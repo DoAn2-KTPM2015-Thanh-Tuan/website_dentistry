@@ -22,14 +22,15 @@ import { NewsCategoryComponent } from './content/main/news-categorys/news-catego
 import { RegisteredComponent } from './content/main/contact/registered/registered.component';
 import { ContactComponent } from './content/main/contact/contact.component';
 import { LoginComponent } from './content/main/login/login.component';
-import { RegisterFormComponent } from './content/main/login/register-form/register-form.component';
+import { RegisterUserComponent } from './content/main/register-user/register-user.component';
 
-import { SliderService } from './service/slider.service';
-import { NewsCategorysService } from './service/news-categorys.service';
-import { ServiceService } from './service/service.service';
-import { LoginService } from './service/login.service';
+import { SliderService } from './shared/services/slider.service';
+import { NewsCategorysService } from './shared/services/news-categorys.service';
+import { ServiceService } from './shared/services/service.service';
+import { RegisterUserService } from './shared/services/register-user.service';
+import { AuthCustomerService } from './shared/gruads/auth-customer.service';
 
-import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
+import { EscapeHtmlPipe } from './shared/pipes/keep-html.pipe';
 
 @NgModule({
   imports: [
@@ -55,14 +56,15 @@ import { EscapeHtmlPipe } from './pipes/keep-html.pipe';
     RegisteredComponent,
     ContactComponent,
     LoginComponent,
-    RegisterFormComponent,
+    RegisterUserComponent,
     EscapeHtmlPipe
   ],
   providers: [
     SliderService,
     NewsCategorysService,
     ServiceService,
-    LoginService
+    RegisterUserService,
+    AuthCustomerService
   ]
 })
 export class HomeModule { }

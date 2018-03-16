@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../../../service/login.service';
+import { RegisterUserService } from '../../../shared/services/register-user.service';
 
 @Component({
-  selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.css']
+  selector: 'app-register-user',
+  templateUrl: './register-user.component.html',
+  styleUrls: ['./register-user.component.css']
 })
-export class RegisterFormComponent implements OnInit {
+export class RegisterUserComponent implements OnInit {
   existedAccount: boolean = false;
   alertSuccess: boolean = false;
-  constructor(private loginService: LoginService) { }
+  constructor(private registerUserService: RegisterUserService) { }
 
   ngOnInit() {
   }
   onSubmit(formRegister){
     if(formRegister.valid){
-      this.loginService.sendFormRegister(formRegister.value)
+      this.registerUserService.sendFormRegister(formRegister.value)
       .then(
         resText => {
           if(resText == 'existed account') {

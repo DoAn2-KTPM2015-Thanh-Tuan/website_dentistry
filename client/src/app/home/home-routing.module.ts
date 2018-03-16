@@ -14,7 +14,7 @@ import { NewsCategoryComponent } from './content/main/news-categorys/news-catego
 import { RegisteredComponent } from './content/main/contact/registered/registered.component';
 import { ContactComponent } from './content/main/contact/contact.component';
 import { LoginComponent } from './content/main/login/login.component';
-import { RegisterFormComponent } from './content/main/login/register-form/register-form.component';
+import { RegisterUserComponent } from './content/main/register-user/register-user.component';
 
 const routes: Routes = [
   {
@@ -61,17 +61,12 @@ const routes: Routes = [
           },
           {
             path: 'login',
-            children: [
-              {
-                path: '',
-                component:  LoginComponent,
-              },
-              {
-                path: 'register',
-                component:  RegisterFormComponent,
-              }
-            ]
+            component:  LoginComponent
           },
+          {
+            path: 'register',
+            component:  RegisterUserComponent
+          }
         ]
       }
     ]
