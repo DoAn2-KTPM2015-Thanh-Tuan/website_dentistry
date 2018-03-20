@@ -15,6 +15,11 @@ import { RegisteredComponent } from './content/main/contact/registered/registere
 import { ContactComponent } from './content/main/contact/contact.component';
 import { LoginComponent } from './content/main/login/login.component';
 import { RegisterUserComponent } from './content/main/register-user/register-user.component';
+import { ProfileCustomerComponent } from './content/profile-customer/profile-customer.component';
+import { InfoAccountComponent } from './content/components-profile-customer/info-account/info-account.component';
+import { HistoryComponent } from './content/components-profile-customer/history/history.component';
+import { ProfileDoctorComponent } from './profile-doctor/profile-doctor.component';
+import { InfoAccountDoctorComponent } from './components-profile-doctor/info-account-doctor/info-account-doctor.component';
 
 const routes: Routes = [
   {
@@ -59,13 +64,55 @@ const routes: Routes = [
               }
             ]
           },
+          // Đăng nhập
           {
             path: 'login',
             component:  LoginComponent
           },
+          // Đăng kí User
           {
             path: 'register',
             component:  RegisterUserComponent
+          },
+          // Profile Customer
+          {
+            path: 'profile-customer',
+            component: ProfileCustomerComponent,
+            children: [
+              {
+                path: '',
+                redirectTo: 'history',
+                pathMatch: 'full'
+              },
+              {
+                path: 'info-account',
+                component: InfoAccountComponent
+              },
+              {
+                path: 'history',
+                component: HistoryComponent
+              },
+              {
+                path: 'registered',
+                component: RegisteredComponent
+              },
+            ]
+          }
+        ]
+      },
+      // profile doctor
+      {
+        path: 'profile-doctor',
+        component: ProfileDoctorComponent,
+        children: [
+          {
+            path: '',
+            redirectTo: 'info-account',
+            pathMatch: 'full'
+          },
+          {
+            path: 'info-account',
+            component: InfoAccountDoctorComponent
           }
         ]
       }

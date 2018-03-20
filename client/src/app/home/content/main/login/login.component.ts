@@ -27,8 +27,9 @@ export class LoginComponent implements OnInit {
         console.log('thất bại');
         this.isSuccess = true;
       } else {
-        // console.log(this.auth.authInfo$.getValue().$type_account);
-        // this.router.navigate(['/dashboard']);
+        if(this.auth.authInfo$.getValue().$type_account == 4){
+          this.router.navigate(['/profile-customer']);
+        } 
       }
     })
   }

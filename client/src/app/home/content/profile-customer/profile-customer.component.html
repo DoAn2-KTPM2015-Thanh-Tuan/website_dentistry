@@ -1,0 +1,26 @@
+<div id="profile-customer">
+  <div class="row">
+    <div class="left">
+      <!-- list option -->
+      <ul class="list-group">
+        <li class="list-group-item title">Thông tin khách hàng</li>
+        <li class="list-group-item item">
+          <a href="" routerLink="/profile-customer/history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Lịch Sử Khám</a>
+        </li>
+        <li class="list-group-item item">
+          <a href="" routerLink="/profile-customer/info-account" routerLinkActive="active">Thông tin tài khoản</a>
+        </li>
+        <li class="list-group-item item">
+            <a href="" routerLink="/profile-customer/registered" routerLinkActive="active">Đăng kí khám</a>
+        </li>
+        <li class="list-group-item item">
+          <a>Thoát</a>
+        </li>
+      </ul>
+      <!-- end list option -->
+    </div>
+    <div class="right">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

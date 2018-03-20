@@ -14,6 +14,7 @@ h1{
 #news-categorys .news-category{
     margin-bottom: 15px;
     border-radius: 4px;
+    padding-bottom: 15px;
 }
 #news-categorys .title{
     font-size: 22px;

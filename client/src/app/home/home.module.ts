@@ -24,6 +24,7 @@ import { ContactComponent } from './content/main/contact/contact.component';
 import { LoginComponent } from './content/main/login/login.component';
 import { RegisterUserComponent } from './content/main/register-user/register-user.component';
 
+// Services
 import { SliderService } from './shared/services/slider.service';
 import { NewsCategorysService } from './shared/services/news-categorys.service';
 import { ServiceService } from './shared/services/service.service';
@@ -31,6 +32,11 @@ import { RegisterUserService } from './shared/services/register-user.service';
 import { AuthCustomerService } from './shared/gruads/auth-customer.service';
 
 import { EscapeHtmlPipe } from './shared/pipes/keep-html.pipe';
+import { ProfileCustomerComponent } from './content/profile-customer/profile-customer.component';
+import { InfoAccountComponent } from './content/components-profile-customer/info-account/info-account.component';
+import { HistoryComponent } from './content/components-profile-customer/history/history.component';
+import { ProfileDoctorComponent } from './profile-doctor/profile-doctor.component';
+import { InfoAccountDoctorComponent } from './components-profile-doctor/info-account-doctor/info-account-doctor.component';
 
 @NgModule({
   imports: [
@@ -57,7 +63,12 @@ import { EscapeHtmlPipe } from './shared/pipes/keep-html.pipe';
     ContactComponent,
     LoginComponent,
     RegisterUserComponent,
-    EscapeHtmlPipe
+    EscapeHtmlPipe,
+    ProfileCustomerComponent,
+    InfoAccountComponent,
+    HistoryComponent,
+    ProfileDoctorComponent,
+    InfoAccountDoctorComponent
   ],
   providers: [
     SliderService,
