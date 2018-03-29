@@ -27,6 +27,8 @@
         "../node_modules/slick-carousel/slick/slick-theme.css",
         "../node_modules/animate.css/animate.min.css",
         "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css",
+        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+        "../node_modules/froala-editor/css/froala_style.min.css",
         "styles.css"
       ],
       "scripts": [
@@ -35,7 +37,8 @@
         "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
         "../node_modules/slick-carousel/slick/slick.min.js",
         "../node_modules/wow.js/dist/wow.min.js",
-        "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js"
+        "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -3,7 +3,7 @@ require_once('myconnect.php');
 
 // lấy tất cả dự liệu
 function get_all($table) {
-	$db =  Database::db_close();
+    $db =  Database::db_close();
     $db = Database::connect();
 
     $query = "SELECT * FROM $table";
@@ -14,11 +14,11 @@ function get_all($table) {
     return $result;
 }
 // lấy dữ liệu với điều kiện
-function get_data($table, $condition) {
-	$db =  Database::db_close();
+function get_data($tables, $condition) {
+    $db =  Database::db_close();
     $db = Database::connect();
     
-    $query = "SELECT * FROM $table WHERE $condition";
+    $query = "SELECT * FROM $tables WHERE $condition";
     $stmt = $db->prepare($query);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -28,7 +28,7 @@ function get_data($table, $condition) {
 
 // insert dữ liệu
 function insertUser($name, $password, $id_position, $account, $phone, $email, $address, $image_user, $type_account) {
-	$db =  Database::db_close();
+    $db =  Database::db_close();
     $db = Database::connect();
     // kiểm tra tài khoản có tồn tại hay không
     if(check_exist_account($account) >= 1) {
@@ -83,6 +83,7 @@ function check_exist_account($name_account){
     return $result;
 }
 
+// kiểm tra đăng nhập
 function check_login($name_account, $password){
     $db =  Database::db_close();
     $db = Database::connect();
@@ -97,7 +98,104 @@ function check_login($name_account, $password){
     $stmt->closeCursor();
     return $result;
 }
-// print_r(check_login('tuankg1028', '123123'));
 
 
+// insert dữ liệu tin tức
+function insertNews($category, $id_user,$title, $img, $excerpt_news, $describe_news, $status, $time_news) {
+    $db =  Database::db_close();
+    $db = Database::connect();
+   
+    $query = "INSERT INTO tb_news(id_news_category,
+                            id_account,
+                            title_news,
+                            image_news,
+                            excerpt_news,
+                            describe_news,
+                            status,
+                            time_news
+                            ) VALUES(
+                            :id_category,
+                            :id_user,
+                            :title,
+                            :img,
+                            :excerpt_news,
+                            :describe_news,
+                            :status,
+                            :time_news)";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':id_category', $category, PDO::PARAM_INT);    
+    $stmt->bindParam(':id_user', $id_user, PDO::PARAM_INT);
+    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':img', $img, PDO::PARAM_STR);
+    $stmt->bindParam(':excerpt_news', $excerpt_news, PDO::PARAM_STR);
+    $stmt->bindParam(':describe_news', $describe_news, PDO::PARAM_STR);
+    $stmt->bindParam(':status', $status, PDO::PARAM_INT);
+    $stmt->bindParam(':time_news',  $time_news);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+    } 
+    // kiểm tra loại tin tức
+    function checkCategoryNews($name_category){
+        $db =  Database::db_close();
+        $db = Database::connect();
+        
+        $query = "SELECT * FROM tb_news_category WHERE name_category = :name_category";
+        $stmt = $db->prepare($query);
+        
+        $stmt->bindParam(':name_category', $name_category, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        return $result;
+    } 
+    // insert loại tin tức
+    function insertCategoryNews($name_category){
+        $db =  Database::db_close();
+        $db = Database::connect();
+       
+        $query = "INSERT INTO tb_news_category(
+                                name_category
+                                ) VALUES(
+                                :name_category)";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':name_category', $name_category, PDO::PARAM_STR);    
+     
+        $stmt->execute();
+        $result = $stmt->rowCount();
+        $stmt->closeCursor();
+        return $result;
+    }
+    // xóa loại tin tức
+    function deleteCategoryNews($id_category){
+        $db =  Database::db_close();
+        $db = Database::connect();
+       
+        $query = "DELETE FROM tb_news_category 
+                        WHERE id_category = :id_category";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id_category', $id_category, PDO::PARAM_STR);    
+     
+        $stmt->execute();
+        $result = $stmt->rowCount();
+        $stmt->closeCursor();
+        return $result;
+    }
+
+    // chỉnh sửa loại tin tức
+    function updateCategoryNews($id_category, $name_category){
+        $db = Database::db_close();
+        $db = Database::connect();
+       
+        $query = "UPDATE tb_news_category SET name_category = :name_category
+                        WHERE id_category = :id_category";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id_category', $id_category, PDO::PARAM_INT);   
+        $stmt->bindParam(':name_category', $name_category, PDO::PARAM_STR);
+        $stmt->execute();
+        $result = $stmt->rowCount();
+        $stmt->closeCursor();
+        return $result;
+    }
 ?>

@@ -1,0 +1,56 @@
+<div class="row" id="show-all">
+  <div class="col-12 title mb-3">
+    Tất cả bài viết <button type="button" class="btn btn-secondary"><a routerLink="/dashboard/add-news">Viết bài mới</a></button>
+  </div>
+
+  <!-- search -->
+  <div class="col-12 search">
+    <form class="form-inline my-2 my-lg-0 d-flex justify-content-end">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+      
+  <div class="col-12 bg-light border rounded mt-2">
+    <table class="table table-hover">
+      <thead>
+        <tr class="text-dark">
+          <th scope="col">STT</th>
+          <th scope="col">Tiêu đề</th>
+          <th scope="col">Tác giả</th>
+          <th scope="col">Chuyên mục</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Ngày đăng</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let news of list_news; let i=index;">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ news?.title_news }}</td>
+          <td>{{ news?.name_user }}</td>
+          <td>{{ news?.name_category }}</td>
+          <td>{{ news?.status == 0 ? 'Chờ xét duyệt' : 'Đã duyệt' }}</td>
+          <td>{{ news?.time_news }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- pagination -->
+  <div class="col-12 pl-0">
+    <nav aria-label="..." class="text-dark mt-3">
+      <ul class="pagination">
+        <li class="page-item disabled">
+          <a class="page-link text-dark" href="#" tabindex="-1">«</a>
+        </li>
+        <li class="page-item"><a class="page-link text-dark" href="#">1</a></li>
+        <li class="page-item text-dark active">
+          <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="page-item"><a class="page-link text-dark" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link text-dark" href="#">»</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>

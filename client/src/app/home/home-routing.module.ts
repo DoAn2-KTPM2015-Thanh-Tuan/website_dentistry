@@ -20,6 +20,7 @@ import { InfoAccountComponent } from './content/components-profile-customer/info
 import { HistoryComponent } from './content/components-profile-customer/history/history.component';
 import { ProfileDoctorComponent } from './profile-doctor/profile-doctor.component';
 import { InfoAccountDoctorComponent } from './components-profile-doctor/info-account-doctor/info-account-doctor.component';
+import { AuthCustomerGuard } from '../home/shared/gruads/auth-customer.guard';
 
 const routes: Routes = [
   {
@@ -78,6 +79,7 @@ const routes: Routes = [
           {
             path: 'profile-customer',
             component: ProfileCustomerComponent,
+            canActivate: [AuthCustomerGuard],
             children: [
               {
                 path: '',

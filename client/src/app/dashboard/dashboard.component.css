@@ -88,7 +88,7 @@ https://bootstrapious.com/p/bootstrap-4-dashboard
     -webkit-transition: width 0.3s linear;
     transition: width 0.3s linear;
     width: calc(100% - 200px);
-    background-color: #F4F7FA;
+    background-color: #EEF5F9;
     min-height: 100vh;
     padding-bottom: 50px;
   }

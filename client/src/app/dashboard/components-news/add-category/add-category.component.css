@@ -1,0 +1,8 @@
+#add-category-news .title{
+    font-family: "Roboto Condensed Regular", "Open Sans", "Roboto Condensed Regular", "Open Sans", Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+.pointer{
+    cursor: pointer;
+}
