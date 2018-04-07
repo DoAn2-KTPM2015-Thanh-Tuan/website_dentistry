@@ -37,6 +37,7 @@ import { InfoAccountComponent } from './content/components-profile-customer/info
 import { HistoryComponent } from './content/components-profile-customer/history/history.component';
 import { ProfileDoctorComponent } from './profile-doctor/profile-doctor.component';
 import { InfoAccountDoctorComponent } from './components-profile-doctor/info-account-doctor/info-account-doctor.component';
+import { InfoWebsiteService } from './shared/services/info-website.service';
 
 @NgModule({
   imports: [
@@ -75,7 +76,8 @@ import { InfoAccountDoctorComponent } from './components-profile-doctor/info-acc
     NewsCategorysService,
     ServiceService,
     RegisterUserService,
-    AuthCustomerService
+    AuthCustomerService,
+    InfoWebsiteService
   ]
 })
 export class HomeModule { }

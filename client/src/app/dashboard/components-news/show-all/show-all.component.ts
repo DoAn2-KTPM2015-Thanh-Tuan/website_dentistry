@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NewsService } from '../../shared/services/news.service';
 
+
+
 @Component({
   selector: 'app-show-all',
   templateUrl: './show-all.component.html',
@@ -11,11 +13,19 @@ export class ShowAllComponent implements OnInit {
   stt:Number = 0;
   constructor(private newsService: NewsService) { }
   
-  ngOnInit() {
-    
+  ngOnInit() { 
     this.newsService.get_list_newsAll()
     .then( res => this.list_news = res)
-
+  }
+  delete(id: Number){
+    // Thông báo xóa
+    if(confirm("Bạn thực sự muốn xóa !!")) {
+      this.newsService.delete(id)
+      .then( () => { 
+        this.newsService.get_list_newsAll()
+      .then( res => this.list_news = res)
+      });
+    }
   }
 
 }

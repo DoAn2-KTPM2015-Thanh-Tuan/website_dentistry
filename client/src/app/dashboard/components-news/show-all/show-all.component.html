@@ -5,10 +5,9 @@
 
   <!-- search -->
   <div class="col-12 search">
-    <form class="form-inline my-2 my-lg-0 d-flex justify-content-end">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+    <div class="form-inline my-2 my-lg-0 d-flex justify-content-end">
+      <input class="form-control mr-sm-2" [(ngModel)]="textSearch" type="search" placeholder="Nhập từ khóa tìm kiếm..." aria-label="Search">
+    </div>
   </div>
       
   <div class="col-12 bg-light border rounded mt-2">
@@ -21,16 +20,20 @@
           <th scope="col">Chuyên mục</th>
           <th scope="col">Trạng thái</th>
           <th scope="col">Ngày đăng</th>
+          <th class="text-center" scope="col">Chỉnh sửa</th>
+          <th class="text-center" scope="col">Xóa</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let news of list_news; let i=index;">
+        <tr *ngFor="let news of list_news | searchNews : textSearch ; let i=index;">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ news?.title_news }}</td>
           <td>{{ news?.name_user }}</td>
           <td>{{ news?.name_category }}</td>
           <td>{{ news?.status == 0 ? 'Chờ xét duyệt' : 'Đã duyệt' }}</td>
           <td>{{ news?.time_news }}</td>
+          <td class="text-center"><a routerLink="/dashboard/edit-news/{{ news.id_news }}"><i class="pointer text-primary fa fa-pencil"></i></a></td>
+          <td class="text-center"><i class="pointer text-danger fa fa-trash-o" (click)="delete(news.id_news)"></i></td>
         </tr>
       </tbody>
     </table>

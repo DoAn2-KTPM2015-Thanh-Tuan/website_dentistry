@@ -8,6 +8,15 @@ import { ShowAllComponent } from './components-news/show-all/show-all.component'
 import { AddCategoryComponent } from './components-news/add-category/add-category.component';
 import { AddNewServiceComponent } from './components-services/add-new-service/add-new-service.component';
 import { ShowAllServiceComponent } from './components-services/show-all-service/show-all-service.component';
+import { EditNewsComponent } from './components-news/edit-news/edit-news.component';
+import { EditServiceComponent } from './components-services/edit-service/edit-service.component';
+import { ShowAllUserComponent } from './components-account/show-all-user/show-all-user.component';
+import { RegisterUserComponent } from './components-account/register-user/register-user.component';
+import { IntroduceWebsiteComponent } from './components-info-website/introduce-website/introduce-website.component';
+import { AllInfoWebsiteComponent } from './components-info-website/all-info-website/all-info-website.component'
+import { SliderComponent } from './components-image/slider/slider.component';
+import { AdvertisementComponent } from './components-image/advertisement/advertisement.component';
+
 const routes: Routes = [
     {
         path: 'dashboard',
@@ -20,6 +29,10 @@ const routes: Routes = [
                 component: AddNewComponent
             },
             {
+                path:'edit-news/:id',
+                component: EditNewsComponent
+            },
+            {
                 path:'show-all-news',
                 component: ShowAllComponent
             },
@@ -29,16 +42,52 @@ const routes: Routes = [
             },
             // services
             {
+                // Thêm service
                 path:'add-new-service',
-                component: AddNewComponent
+                component: AddNewServiceComponent
             },
-            {
+            {   
+                // Hiển thị service
                 path:'show-all-service',
                 component: ShowAllServiceComponent
             },
+            {   
+                // Chỉnh sửa service
+                path:'edit-service/:id',
+                component: EditServiceComponent
+            }, 
+            // account
+            {   
+                // hiển thị người dùng
+                path:'show-all-user',
+                component: ShowAllUserComponent
+            },
+            {   
+                // tạo mới người dùng
+                path:'register-user',
+                component: RegisterUserComponent
+            }, 
+            // giới thiệu website
+            {   
+                // trang giới thiệu website
+                path:'introduce-website',
+                component: IntroduceWebsiteComponent
+            },
+            {   
+                // tất cả thông tin webstie
+                path:'all-info-website',
+                component: AllInfoWebsiteComponent
+            },
+            // hình ảnh (slider, quảng cáo)
             {
-                path: 'add-category-service',
-                component: AddNewServiceComponent
+                // slider
+                path:'slider',
+                component: SliderComponent
+            },
+            {
+                // quảng cáo
+                path:'advertisement',
+                component: AdvertisementComponent
             }
         ]
     },

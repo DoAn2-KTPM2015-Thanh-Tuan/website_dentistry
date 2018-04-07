@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { SlideInOutAnimation } from '../../shared/animate/slide-down';
-import { NewsService } from '../../shared/services/news.service';
-import { CategoryNewsService } from '../../shared/services/category-news.service';
+import { ServiceService } from '../../shared/services/service.service';
+
 
 @Component({
   selector: 'app-add-new-service',
@@ -11,8 +11,8 @@ import { CategoryNewsService } from '../../shared/services/category-news.service
 })
 export class AddNewServiceComponent implements OnInit {
 
-  constructor(private newsService: NewsService, private categoryNews: CategoryNewsService) { }
-  listCategoryNews;
+  constructor(private serviceService: ServiceService) { }
+
   // Status
   chosenOption: string = '0';
   formAddNews;
@@ -42,33 +42,31 @@ export class AddNewServiceComponent implements OnInit {
 
   // submit
   
-  onSubmit(formAddNews){
-    console.log(formAddNews)
+  onSubmit(formAddService){
+    console.log(formAddService)
     //  kiểm tra đã chọn file hay chưa
     if( this.isType == true && this.file_data == null) {
       this.isType = false ; // hiển thị lỗi khi = false
       this.textErroFile = 'Vui lòng chọn hình ảnh';
     } else {
       // nếu form đã điền đủ thông tin
-      if( formAddNews.valid ){
+      if( formAddService.valid ){
         const formData = new FormData();
         // data send to server
-        formData.append('title', formAddNews.value.title);
-        formData.append('excerpt_news', formAddNews.value.excerpt);
-        formData.append('describe_news', formAddNews.value.textNews);
+        formData.append('title', formAddService.value.title);
+        formData.append('excerpt_news', formAddService.value.excerpt);
+        formData.append('describe_news', formAddService.value.textService);
         formData.append('file', this.file_data);
-        formData.append('category', formAddNews.value.category);
-        formData.append('status', formAddNews.value.status);
+        formData.append('status', formAddService.value.status);
         formData.append('idUser', '1');
 
-        this.newsService.insert_news(formData)
-        .then( res => {
-          formAddNews.resetForm();
-          console.log(res)
+        this.serviceService.insert_service(formData)
+        .then( () => {
+          formAddService.resetForm();
         });
         
       } else {
-        console.log(formAddNews)
+        console.log(formAddService)
       }
     }
     
@@ -90,32 +88,9 @@ export class AddNewServiceComponent implements OnInit {
       this.isType = true;
     }
   }
-
-
-  // Thêm chuyên mục
-  addCategoryNews(formCategoryNews) {
-    console.log(formCategoryNews)
-    if(formCategoryNews.valid){
-      this.categoryNews.addCategory(formCategoryNews.value)
-      .then( (res) => { 
-          // thông báo lỗi 
-          if(res == 0){
-             this.isErrAdd = true;
-             alert("Tên chuyên mục đã tồn tại !!");
-          }
-        } )
-      .then( () => ( formCategoryNews.resetForm() ))
-      .then( () => {
-        this.categoryNews.getAllCategory()
-        .then(res => this.listCategoryNews = res )
-      } )
-    }
-  }
   
   ngOnInit() {
-    // Lấy danh sách loại tin tức
-    this.categoryNews.getAllCategory()
-    .then(res => this.listCategoryNews = res )
+   
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NewsService } from '../../shared/services/news.service';
+import { ServiceService } from '../../shared/services/service.service';
 
 @Component({
   selector: 'app-show-all-service',
@@ -8,14 +8,25 @@ import { NewsService } from '../../shared/services/news.service';
 })
 export class ShowAllServiceComponent implements OnInit {
   
-  list_news;
+  list_service: Array<Object>;
   stt:Number = 0;
-  constructor(private newsService: NewsService) { }
-  
+  constructor(private serviceService: ServiceService) { }
+
+  delete(id: Number){
+    // Thông báo xóa
+    if(confirm("Bạn thực sự muốn xóa !!")) {
+      this.serviceService.delete(id)
+      .then( () => { 
+        this.serviceService.get_list_serviceAll()
+      .then( res => this.list_service = res)
+      });
+    }
+  }  
+
   ngOnInit() {
     
-    this.newsService.get_list_newsAll()
-    .then( res => this.list_news = res)
+    this.serviceService.get_list_serviceAll()
+    .then( res => this.list_service = res)
 
   }
 

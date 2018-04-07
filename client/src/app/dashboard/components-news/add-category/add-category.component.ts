@@ -63,9 +63,7 @@ export class AddCategoryComponent implements OnInit {
       .then(res => this.listCategoryNews = res )
     })
   }
-
   
-
   changeValue(id_category: Number, event){
     // Thay đổi giá trị trong object
     this.listCategoryNews.find( function(item){

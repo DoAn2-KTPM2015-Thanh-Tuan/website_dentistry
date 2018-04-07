@@ -264,6 +264,50 @@ body{
       padding: 0 3rem;
     }
   }
+  .form-group-material {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  input.input-material {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+    color: #868e96;
+    font-weight: 300;
+  }
+  
+  input.input-material:focus {
+    border-color: #33b35a;
+    outline: none;
+  }
+  
+  input.input-material ~ label {
+    color: #aaa;
+    position: absolute;
+    top: 14px;
+    left: 0;
+    cursor: text;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    font-weight: 300;
+  }
+  
+  input.input-material ~ label.error {
+    color: #dc3545;
+    font-size: 0.75em;
+    position: absolute;
+    top: auto;
+    bottom: -30px;
+    left: 0;
+  }
+  
+  input.input-material ~ label.active {
+    font-size: 0.8em;
+    top: -10px;
+    color: #33b35a;
+  }
   
 /* end style general dashboard */
   
