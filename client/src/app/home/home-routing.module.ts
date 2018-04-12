@@ -18,9 +18,9 @@ import { RegisterUserComponent } from './content/main/register-user/register-use
 import { ProfileCustomerComponent } from './content/profile-customer/profile-customer.component';
 import { InfoAccountComponent } from './content/components-profile-customer/info-account/info-account.component';
 import { HistoryComponent } from './content/components-profile-customer/history/history.component';
-import { ProfileDoctorComponent } from './profile-doctor/profile-doctor.component';
-import { InfoAccountDoctorComponent } from './components-profile-doctor/info-account-doctor/info-account-doctor.component';
 import { AuthCustomerGuard } from '../home/shared/gruads/auth-customer.guard';
+import { DetailServiceComponent } from './content/main/detail-service/detail-service.component';
+
 
 const routes: Routes = [
   {
@@ -99,25 +99,14 @@ const routes: Routes = [
                 component: RegisteredComponent
               },
             ]
+          },
+          // service
+          {
+            path: 'detail-service/:id',
+            component: DetailServiceComponent
           }
         ]
       },
-      // profile doctor
-      {
-        path: 'profile-doctor',
-        component: ProfileDoctorComponent,
-        children: [
-          {
-            path: '',
-            redirectTo: 'info-account',
-            pathMatch: 'full'
-          },
-          {
-            path: 'info-account',
-            component: InfoAccountDoctorComponent
-          }
-        ]
-      }
     ]
   }
 ];

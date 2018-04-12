@@ -57,11 +57,12 @@
     transition: all .5s;
     left: 0;
 }
-#list-services .service .title{
+#list-services .service .title a{
     font-size: 22px;
     font-weight: 700;
     margin-bottom: 15px;
-    color: #666666;
+    color: #1a99aa;
+    text-decoration: none;
 }
 #list-services .service .content{
     color: #666666;

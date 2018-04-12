@@ -86,8 +86,8 @@
     border-style: solid;
     border-color: #f1f1f1 transparent;
 }
-#header .header-top .right .logined .wrap-item:hover ul{
-    display: block;
+.show{
+    display: block!important;
 }
 #header .header-top .right .logined .wrap-item ul{
     z-index: 999;

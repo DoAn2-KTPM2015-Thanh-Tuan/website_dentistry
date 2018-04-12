@@ -27,10 +27,20 @@ export class LoginComponent implements OnInit {
         console.log('thất bại');
         this.isSuccess = true;
       } else {
-        if(this.auth.authInfo$.getValue().$type_account == 4){
+        // kiểm tra loại tài khoản
+
+        let type_account:Number = this.auth.authInfo$.getValue().$type_account;
+
+        // khách hàng
+        if(type_account == 4){
           this.router.navigate(['/profile-customer']);
         } 
+        // bác sĩ
+        else if(type_account == 3) {
+          this.router.navigate(['/dashboard']);
+        }
       }
+      // end if
     })
   }
 

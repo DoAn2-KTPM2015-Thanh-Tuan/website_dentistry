@@ -7,7 +7,9 @@ import { ServiceService } from '../../shared/services/service.service';
   styleUrls: ['./show-all-service.component.css']
 })
 export class ShowAllServiceComponent implements OnInit {
-  
+  // trang hiện tại
+  p: number = 1;
+
   list_service: Array<Object>;
   stt:Number = 0;
   constructor(private serviceService: ServiceService) { }

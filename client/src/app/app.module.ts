@@ -3,9 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AppComponent } from './app.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +13,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     HomeModule,
-    DashboardModule
+    DashboardModule,
+    NgxPaginationModule,
 
   ],
   providers: [],

@@ -88,7 +88,7 @@ function check_login($name_account, $password){
     $db =  Database::db_close();
     $db = Database::connect();
     
-    $query = "SELECT * FROM tb_account WHERE name_account = :name_account && pass_account = :pass_account ";
+    $query = "SELECT * FROM tb_account WHERE name_account = :name_account && pass_account = :pass_account";
     $stmt = $db->prepare($query);
     
     $stmt->bindParam(':name_account', $name_account, PDO::PARAM_STR);
@@ -288,6 +288,25 @@ function deleteService($id_service){
     $stmt->closeCursor();
     return $result;
 }
+// update view dịch vụ
+function updateViewService($id_service, $current_view){
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+    $view_service = $current_view + 1;
+    $query = "UPDATE tb_service 
+                SET view_service = :view_service
+                WHERE id_service = :id_service";
+    $stmt = $db->prepare($query); 
+    $stmt->bindParam(':id_service',  $id_service, PDO::PARAM_INT);
+    $stmt->bindParam(':view_service', $view_service, PDO::PARAM_INT); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+
+}
+
 // xóa loại tin tức
 function deleteNews($id_news){
     $db =  Database::db_close();
@@ -484,15 +503,53 @@ function insertAdvertisement($order, $link_img){
                             ) VALUES(
                             '$link_img',
                             '$order')";
-    echo $query;
     $stmt = $db->prepare($query); 
-    $stmt->bindParam(':link_img',  $link_img, PDO::PARAM_STR);
-    $stmt->bindParam(':order', $order, PDO::PARAM_INT); 
+/*    $stmt->bindParam(':link_img',  $link_img, PDO::PARAM_STR);
+    $stmt->bindParam(':order', $order, PDO::PARAM_INT); */
     $stmt->execute(); 
     $result = $stmt->rowCount();
     $stmt->closeCursor();
     return $result;
 
+}
+
+function updateWorkingCalendarDoctor($st2, $ct2,
+                                    $st3, $ct3, 
+                                    $st4, $ct4, 
+                                    $st5, $ct5,
+                                    $st6, $ct6,
+                                    $st7, $ct7) {
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+
+     $query = "INSERT INTO tb_working_calendar(
+                            st2, ct2,
+                            st3, ct3,
+                            st4, ct4,
+                            st5, ct5,
+                            st6, ct6,
+                            st7, ct7
+                            ) VALUES($st2, $ct2,
+                                    $st3, $ct3, 
+                                    $st4, $ct4, 
+                                    $st5, $ct5,
+                                    $st6, $ct6,
+                                    $st7, $ct7)";
+
+
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
+
+function isChangNumber($bool){
+    if ($bool) {
+       return 1;
+    }
+    return 0;
 }
 
 

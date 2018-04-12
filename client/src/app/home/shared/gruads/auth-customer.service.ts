@@ -8,11 +8,9 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class AuthCustomerService {
 
-  static UNKNOWN_USER = new AuthInfo(null, null);
+  static UNKNOWN_USER = new AuthInfo(null, null, null, null);
 
   authInfo$: BehaviorSubject<AuthInfo> = new BehaviorSubject<AuthInfo>(AuthCustomerService.UNKNOWN_USER);
-  
-
 
   constructor(private http: Http) { }
 
@@ -25,7 +23,7 @@ export class AuthCustomerService {
     .toPromise()
     .then(res => res.json())
     .then( resJson => {
-      const authInfo = new AuthInfo(resJson.id_account, resJson.type_account);
+      const authInfo = new AuthInfo(resJson.id_account, resJson.name_user, resJson.image_user, resJson.type_account);
       this.authInfo$.next(authInfo);
       
       return resJson;

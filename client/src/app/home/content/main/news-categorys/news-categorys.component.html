@@ -16,7 +16,7 @@
         <div class="item-first" *ngIf="newsCategory.children_first_news?.id_news">
           <figure class="wrap-img">
               <a routerLink='/news-categorys/{{ newsCategory.id }}/{{ newsCategory.children_first_news?.id_news }}'>
-                <img src="{{ newsCategory.children_first_news?.image_news }}" alt="" width="100%">
+                <img src="{{newsCategory.children_first_news?.image_news}}" alt="" width="100%">
               </a>
           </figure>
           <div class="title-item-first">

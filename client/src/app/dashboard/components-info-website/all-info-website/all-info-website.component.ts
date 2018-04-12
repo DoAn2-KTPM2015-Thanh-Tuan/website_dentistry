@@ -100,7 +100,7 @@ export class AllInfoWebsiteComponent implements OnInit {
         });
         
       } else {
-        console.log(formInfo)
+        console.log(formInfo, 'err');
       }
     
   }

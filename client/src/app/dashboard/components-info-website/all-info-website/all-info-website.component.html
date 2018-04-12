@@ -90,14 +90,14 @@
               type="text" 
               class="form-control"
               name="email"
-              email
-              [ngClass]="((!formInfo.controls.email?.errors?.email && formInfo.controls.email?.touched) ?
-               'is-valid' : '' )"
+
                [(ngModel)]="email">
                <!-- feedback -->
-              <div class="invalid-feedback">
+              <!-- <div class="invalid-feedback">
+                  [ngClass]="((formInfo.controls.email?.errors?.email && (formInfo.controls.email?.touched || formInfo.submitted) ) ?
+                  'is-invalid' : '' )"
                 Email không hợp lệ
-              </div>
+              </div> -->
             </div>
           </div>
 

@@ -10,3 +10,7 @@
 .pointer{
     cursor: pointer;
 }
+
+.my-pagination /deep/ ul{
+    padding: 0;
+}

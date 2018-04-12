@@ -5,6 +5,9 @@ import { HomeRoutingModule } from './home-routing.module';
 import { SlickModule } from 'ngx-slick';
 import { HttpModule } from '@angular/http';
 import { FormsModule }   from '@angular/forms';
+import { OrderModule } from 'ngx-order-pipe';
+import { FacebookModule } from 'ngx-facebook';
+
 
 // Components
 import { HomeComponent } from './home.component';
@@ -35,9 +38,8 @@ import { EscapeHtmlPipe } from './shared/pipes/keep-html.pipe';
 import { ProfileCustomerComponent } from './content/profile-customer/profile-customer.component';
 import { InfoAccountComponent } from './content/components-profile-customer/info-account/info-account.component';
 import { HistoryComponent } from './content/components-profile-customer/history/history.component';
-import { ProfileDoctorComponent } from './profile-doctor/profile-doctor.component';
-import { InfoAccountDoctorComponent } from './components-profile-doctor/info-account-doctor/info-account-doctor.component';
 import { InfoWebsiteService } from './shared/services/info-website.service';
+import { DetailServiceComponent } from './content/main/detail-service/detail-service.component';
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import { InfoWebsiteService } from './shared/services/info-website.service';
     HomeRoutingModule,
     SlickModule.forRoot(),
     HttpModule,
-    FormsModule
+    FormsModule,
+    OrderModule,
+    FacebookModule.forRoot()
   ],
   declarations: [
     HomeComponent, 
@@ -68,8 +72,7 @@ import { InfoWebsiteService } from './shared/services/info-website.service';
     ProfileCustomerComponent,
     InfoAccountComponent,
     HistoryComponent,
-    ProfileDoctorComponent,
-    InfoAccountDoctorComponent
+    DetailServiceComponent
   ],
   providers: [
     SliderService,

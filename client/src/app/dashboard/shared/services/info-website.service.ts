@@ -11,7 +11,7 @@ export class InfoWebsiteService {
   insertInfoWebsite(formData){
     return this.http.post(AppSettings.API_ENDPOINT + '/dashboard/info-website/insert-info.php', formData)
     .toPromise()
-      .then( res => res.json() )
+      .then( res => res.text() )
       .catch(err => err)
   }
 

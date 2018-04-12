@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { FormsModule } from '@angular/forms';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { AuthCustomerGuard } from '../home/shared/gruads/auth-customer.guard';
 
@@ -12,6 +13,7 @@ import { SearchCategoryNewsPipe } from './shared/pipes/searchCategoryNews.pipe';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule } from './dashboard.routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -36,7 +38,9 @@ import { InfoWebsiteService } from './shared/services/info-website.service';
 import { SliderComponent } from './components-image/slider/slider.component';
 import { AdvertisementComponent } from './components-image/advertisement/advertisement.component';
 import { ImageAdvertisementService } from './shared/services/image-advertisement.service';
-
+import { OrderModule } from 'ngx-order-pipe';
+import { UpdateWorkingCalendarComponent } from './components-working-calendar-doctor/update-working-calendar/update-working-calendar.component';
+import { WorkingCalendarService } from './shared/services/working-calendar.service';
 
 @NgModule({
   imports: [
@@ -44,8 +48,11 @@ import { ImageAdvertisementService } from './shared/services/image-advertisement
     DashboardRoutingModule,
     FroalaEditorModule.forRoot(), 
     FroalaViewModule.forRoot(),
+    
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    OrderModule,
+    NgxPaginationModule
   ],
   declarations: [
     SearchCategoryNewsPipe, 
@@ -67,8 +74,9 @@ import { ImageAdvertisementService } from './shared/services/image-advertisement
     AllInfoWebsiteComponent,
     IntroduceWebsiteComponent,
     SliderComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
+    UpdateWorkingCalendarComponent,
   ],
-  providers: [AuthCustomerGuard, NewsService, CategoryNewsService, ServiceService, AccountService, InfoWebsiteService, ImageAdvertisementService]
+  providers: [AuthCustomerGuard, NewsService, CategoryNewsService, ServiceService, AccountService, InfoWebsiteService, ImageAdvertisementService, WorkingCalendarService]
 })
 export class DashboardModule { }

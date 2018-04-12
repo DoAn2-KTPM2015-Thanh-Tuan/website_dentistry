@@ -4,12 +4,12 @@
       <!-- Sidebar Header    -->
       <div class="sidenav-header d-flex align-items-center justify-content-center">
         <!-- User Info-->
-        <div class="sidenav-header-inner text-center"><img src="assets/img/WIN_20171211_204326.JPG" alt="person" class="img-fluid rounded-circle">
-          <h2 class="h5">Lê Thanh Tuấn</h2><span>Web Developer</span>
+        <div class="sidenav-header-inner text-center"><img src="{{info_account.image_user}}" alt="{{info_account.name_user}}" class="img-fluid rounded-circle">
+          <h2 class="h5">{{info_account.name_user}}</h2><span>Web Developer</span>
         </div>
         <!-- Small Brand information, appears on minimized sidebar-->
         <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center">
-          <img src="assets/img/WIN_20171211_204326.JPG" alt="person" class="img-fluid rounded-circle"></a>
+          <img src="{{info_account.image_user}}" alt="{{info_account.name_user}}" class="img-fluid rounded-circle"></a>
         </div>
       </div>
       <!-- Sidebar Navigation Menus-->
@@ -65,7 +65,7 @@
           </li>
 
           <!--lịch khám -->
-          <li><a href="forms.html"><i class="fa fa-calendar"></i>Lịch khám</a></li>
+          <li routerLinkActive="active"><a routerLink="/dashboard/update-working-calendar"><i class="fa fa-calendar"></i>Lịch khám</a></li>
           <!-- <li><a href="tables.html"> <i class="icon-grid"></i>Tables                             </a></li>-->
             
           <!-- <li>

@@ -16,7 +16,7 @@ import { IntroduceWebsiteComponent } from './components-info-website/introduce-w
 import { AllInfoWebsiteComponent } from './components-info-website/all-info-website/all-info-website.component'
 import { SliderComponent } from './components-image/slider/slider.component';
 import { AdvertisementComponent } from './components-image/advertisement/advertisement.component';
-
+import { UpdateWorkingCalendarComponent } from './components-working-calendar-doctor/update-working-calendar/update-working-calendar.component';
 const routes: Routes = [
     {
         path: 'dashboard',
@@ -88,6 +88,11 @@ const routes: Routes = [
                 // quảng cáo
                 path:'advertisement',
                 component: AdvertisementComponent
+            },
+            {
+                // cập nhật lịch làm việc của bác sĩ
+                path:'update-working-calendar',
+                component: UpdateWorkingCalendarComponent
             }
         ]
     },

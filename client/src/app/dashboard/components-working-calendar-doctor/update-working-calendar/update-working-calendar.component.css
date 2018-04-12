@@ -1,0 +1,19 @@
+.title{
+    font-family: "Roboto Condensed Regular", "Open Sans", "Roboto Condensed Regular", "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+
+input[type=checkbox] {
+    display: none
+}
+input[type=checkbox]+label {
+    background: url(http://s17.postimg.org/phsoii5vf/check.png) no-repeat;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 2.5px;
+    height: 18px;
+}
+
+input[type=checkbox]:checked+label {
+    background: url(http://s2.postimg.org/zbjg138np/check_tick.jpg) no-repeat;    
+}

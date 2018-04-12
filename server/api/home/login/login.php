@@ -5,5 +5,5 @@
     $account = $request->account;
     $passwd = $request->passwd;
     
-    // hàm trả về dự liệu nhiều dòng chọn phần tử "0" phần tử đầu tiên
+    // hàm trả về dữ liệu nhiều dòng chọn phần tử "0" phần tử đầu tiên
     echo json_encode(check_login($account, $passwd));

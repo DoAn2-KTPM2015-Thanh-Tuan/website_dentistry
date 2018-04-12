@@ -8,21 +8,23 @@
         Các dịch vụ nổi bật tại ucare
       </h1>
     </div>
-    <div class="col-12 col-md-6 col-xl-4 service wow jackInTheBox">
+
+    <div class="col-12 col-md-6 col-xl-4 service wow jackInTheBox" *ngFor="let service of list_service">
       <figure class="wrap-img">
         <div class="icon-themebg">
           <i class="fa fa-asterisk"></i>
         </div>
-        <img src="assets/img/service1.jpg" alt="">
+        <img src="{{service.image_service}}" alt="{{service.title_service}}">
       </figure>
       <div class="title">
-        Dán răng sứ cực mỏng veneers - lumineers
+        <a routerLink="/detail-service/{{service.id_service}}">{{service.title_service}}</a>
       </div>
       <div class="content">
-          Lựa chọn hàng đầu cho răng bị mòn, mẻ, răng lệch, xỉn màu…Dán sứ Veneers-Lumineers cực mỏng chỉ 0,2-0,5mm là giải pháp nhanh chóng, ít mài răng, ít đau, mang lại hiệu quả thẩm mỹ cao được ưa chuộng trên khắp thế giới.
+        {{service.excerpt_service}}
       </div>
     </div>
-    <div class="col-12 col-md-6 col-xl-4 service wow jackInTheBox">
+
+    <!-- <div class="col-12 col-md-6 col-xl-4 service wow jackInTheBox">
         <figure class="wrap-img">
           <div class="icon-themebg">
             <i class="fa fa-asterisk"></i>
@@ -91,6 +93,6 @@
                 <div class="content">
                     Lựa chọn hàng đầu cho răng bị mòn, mẻ, răng lệch, xỉn màu…Dán sứ Veneers-Lumineers cực mỏng chỉ 0,2-0,5mm là giải pháp nhanh chóng, ít mài răng, ít đau, mang lại hiệu quả thẩm mỹ cao được ưa chuộng trên khắp thế giới.
                 </div>
-              </div>
+              </div> -->
   </div>
 </div>
