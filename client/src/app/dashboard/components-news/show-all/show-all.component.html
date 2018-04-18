@@ -15,17 +15,37 @@
       <thead>
         <tr class="text-dark">
           <th scope="col">STT</th>
-          <th scope="col">Tiêu đề</th>
-          <th scope="col">Tác giả</th>
-          <th scope="col">Chuyên mục</th>
-          <th scope="col">Trạng thái</th>
-          <th scope="col">Ngày đăng</th>
+          <!-- tiêu đề -->
+          <th scope="col" (click)="sort('title_news')">Tiêu đề 
+            <span class="sort" *ngIf="key == 'title_news' && reverse"></span>
+            <span class="sort_1" *ngIf="key == 'title_news' && !reverse"></span>
+          </th>
+          <!-- tác giả -->
+          <th scope="col" (click)="sort('name_user')">Tác giả
+            <span class="sort" *ngIf="key == 'name_user' && reverse"></span>
+            <span class="sort_1" *ngIf="key == 'name_user' && !reverse"></span>
+          </th>
+          <!-- chuyên mục -->
+          <th scope="col" (click)="sort('name_category')">Chuyên mục
+            <span class="sort" *ngIf="key == 'name_category' && reverse"></span>
+            <span class="sort_1" *ngIf="key == 'name_category' && !reverse"></span>
+          </th>
+          <!-- trạng thái -->
+          <th scope="col" (click)="sort('status')">Trạng thái
+            <span class="sort" *ngIf="key == 'status' && reverse"></span>
+            <span class="sort_1" *ngIf="key == 'status' && !reverse"></span>
+          </th>
+          <!-- ngày đăng -->
+          <th scope="col" (click)="sort('time_news')">Ngày đăng
+            <span class="sort" *ngIf="key == 'time_news' && reverse"></span>
+            <span class="sort_1" *ngIf="key == 'time_news' && !reverse"></span>
+          </th>
           <th class="text-center" scope="col">Chỉnh sửa</th>
           <th class="text-center" scope="col">Xóa</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let news of list_news | orderBy: key : reverse | searchNews : textSearch | paginate: { itemsPerPage: 2, currentPage: p }; let i=index;">
+        <tr *ngFor="let news of list_news | orderBy: key : reverse | searchNews : textSearch | paginate: { itemsPerPage: perpages_number, currentPage: p }; let i=index;">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ news?.title_news }}</td>
           <td>{{ news?.name_user }}</td>

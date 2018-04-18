@@ -17,6 +17,8 @@ export class ShowAllComponent implements OnInit {
   stt:Number = 0;
 
   //sorting
+  perpages_number = 3;
+
   key: string = 'status'; //set default
   reverse: boolean = false;
   sort(key){

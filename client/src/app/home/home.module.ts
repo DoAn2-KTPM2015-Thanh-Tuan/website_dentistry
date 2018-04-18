@@ -40,6 +40,7 @@ import { InfoAccountComponent } from './content/components-profile-customer/info
 import { HistoryComponent } from './content/components-profile-customer/history/history.component';
 import { InfoWebsiteService } from './shared/services/info-website.service';
 import { DetailServiceComponent } from './content/main/detail-service/detail-service.component';
+import { ListServicesPageComponent } from './content/main/list-services-page/list-services-page.component';
 
 @NgModule({
   imports: [
@@ -72,7 +73,8 @@ import { DetailServiceComponent } from './content/main/detail-service/detail-ser
     ProfileCustomerComponent,
     InfoAccountComponent,
     HistoryComponent,
-    DetailServiceComponent
+    DetailServiceComponent,
+    ListServicesPageComponent
   ],
   providers: [
     SliderService,

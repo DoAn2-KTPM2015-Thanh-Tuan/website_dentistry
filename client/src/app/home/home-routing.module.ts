@@ -20,7 +20,7 @@ import { InfoAccountComponent } from './content/components-profile-customer/info
 import { HistoryComponent } from './content/components-profile-customer/history/history.component';
 import { AuthCustomerGuard } from '../home/shared/gruads/auth-customer.guard';
 import { DetailServiceComponent } from './content/main/detail-service/detail-service.component';
-
+import { ListServicesPageComponent } from './content/main/list-services-page/list-services-page.component';
 
 const routes: Routes = [
   {
@@ -100,7 +100,12 @@ const routes: Routes = [
               },
             ]
           },
-          // service
+          // list-services-page
+          {
+            path: 'list-services',
+            component: ListServicesPageComponent
+          },
+          // service-detail
           {
             path: 'detail-service/:id',
             component: DetailServiceComponent
