@@ -9,9 +9,21 @@ import { ServiceService } from '../../shared/services/service.service';
 export class ShowAllServiceComponent implements OnInit {
   // trang hiện tại
   p: number = 1;
+  perpages_number = 10;
 
   list_service: Array<Object>;
   stt:Number = 0;
+
+  //sorting
+  key: string = 'status'; //set default
+  reverse: boolean = false;
+  sort(key){
+    if( this.key == key ) {
+      this.reverse = !this.reverse;
+    } else {
+      this.key = key;
+    }
+  }
   constructor(private serviceService: ServiceService) { }
 
   delete(id: Number){

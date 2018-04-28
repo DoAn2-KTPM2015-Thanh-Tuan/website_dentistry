@@ -41,6 +41,8 @@ import { ImageAdvertisementService } from './shared/services/image-advertisement
 import { OrderModule } from 'ngx-order-pipe';
 import { UpdateWorkingCalendarComponent } from './components-working-calendar-doctor/update-working-calendar/update-working-calendar.component';
 import { WorkingCalendarService } from './shared/services/working-calendar.service';
+import { SearchAccountPipe } from './shared/pipes/search-account.pipe';
+import { EditUserComponent } from './components-account/edit-user/edit-user.component';
 
 @NgModule({
   imports: [
@@ -76,6 +78,8 @@ import { WorkingCalendarService } from './shared/services/working-calendar.servi
     SliderComponent,
     AdvertisementComponent,
     UpdateWorkingCalendarComponent,
+    SearchAccountPipe,
+    EditUserComponent,
   ],
   providers: [AuthCustomerGuard, NewsService, CategoryNewsService, ServiceService, AccountService, InfoWebsiteService, ImageAdvertisementService, WorkingCalendarService]
 })

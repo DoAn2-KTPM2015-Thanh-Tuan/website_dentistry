@@ -27,7 +27,7 @@ function get_data($tables, $condition) {
 }
 
 // insert dữ liệu
-function insertUser($name, $password, $id_position, $account, $phone, $email, $address, $image_user, $type_account) {
+function insertUser($name, $password, $id_position, $account, $phone, $email, $address, $image_user, $education = '', $status_show, $type_account) {
     $db =  Database::db_close();
     $db = Database::connect();
     // kiểm tra tài khoản có tồn tại hay không
@@ -42,6 +42,8 @@ function insertUser($name, $password, $id_position, $account, $phone, $email, $a
                             email_user,
                             address_user,
                             image_user,
+                            education,
+                            status_show,
                             type_account) VALUES(
                             :name_account,
                             :pass_account,
@@ -51,6 +53,8 @@ function insertUser($name, $password, $id_position, $account, $phone, $email, $a
                             :email_user,
                             :address_user,
                             :image_user,
+                            :education,
+                            :status_show,
                             :type_account
                             )";
     $stmt = $db->prepare($query);
@@ -61,7 +65,9 @@ function insertUser($name, $password, $id_position, $account, $phone, $email, $a
     $stmt->bindParam(':phone_user', $phone, PDO::PARAM_INT);
     $stmt->bindParam(':email_user', $email, PDO::PARAM_STR);
     $stmt->bindParam(':address_user', $address, PDO::PARAM_STR);
-    $stmt->bindParam(':image_user',  $image_user, PDO::PARAM_STR);
+    $stmt->bindParam(':image_user', $image_user, PDO::PARAM_STR);
+    $stmt->bindParam(':education', $education, PDO::PARAM_STR);
+    $stmt->bindParam(':status_show', $status_show, PDO::PARAM_INT);
     $stmt->bindParam(':type_account', $type_account, PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->rowCount();
@@ -551,6 +557,66 @@ function isChangNumber($bool){
     }
     return 0;
 }
+
+
+// xóa tài khoản
+function deleteAccount($id_account){
+    $db =  Database::db_close();
+    $db = Database::connect();
+   
+    $query = "DELETE FROM tb_account 
+                    WHERE id_account = :id_account";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':id_account', $id_account, PDO::PARAM_STR);    
+ 
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
+
+// insert dữ liệu
+function updateAccount($id_account, $name, $id_position, $phone, $email, $address, $image_user, $education = '', $status_show, $type_account) {
+
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+    $query = "UPDATE tb_account 
+            SET name_user = '$name',
+                id_position = '$id_position',
+                phone_user = '$phone',
+                email_user = '$email',
+                address_user = '$address',
+                image_user = '$image_user',
+                education = '$education',
+                status_show = '$status_show',
+                type_account =  '$type_account'
+            WHERE id_account = '$id_account'";
+    $stmt = $db->prepare($query);
+
+    $stmt->execute();
+
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}  
+
+function resetAccount($id) {
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+    $query = "UPDATE tb_account
+            SET pass_account = '11111111'
+            WHERE id_account = '$id'";
+
+    $stmt = $db->prepare($query);
+
+    $stmt->execute();
+
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+} 
 
 
 ?>

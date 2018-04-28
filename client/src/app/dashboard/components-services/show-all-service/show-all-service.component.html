@@ -20,16 +20,28 @@
       <thead>
         <tr class="text-dark">
           <th scope="col">STT</th>
-          <th scope="col">Tiêu đề</th>
-          <th scope="col">Tác giả</th>
-          <th scope="col">Trạng thái</th>
-          <th scope="col">Ngày đăng</th>
+          <th scope="col" (click)="sort('title_service')">Tiêu đề
+            <span class="sort_1" *ngIf="key == 'title_service' && reverse"></span>
+            <span class="sort" *ngIf="key == 'title_service' && !reverse"></span>
+          </th>
+          <th scope="col" (click)="sort('name_user')">Tác giả
+            <span class="sort_1" *ngIf="key == 'name_user' && reverse"></span>
+            <span class="sort" *ngIf="key == 'name_user' && !reverse"></span>
+          </th>
+          <th scope="col" (click)="sort('status')">Trạng thái
+            <span class="sort_1" *ngIf="key == 'status' && reverse"></span>
+            <span class="sort" *ngIf="key == 'status' && !reverse"></span>
+          </th>
+          <th scope="col" (click)="sort('time_service')">Ngày đăng
+            <span class="sort_1" *ngIf="key == 'time_service' && reverse"></span>
+            <span class="sort" *ngIf="key == 'time_service' && !reverse"></span>
+          </th>
           <th class="text-center" scope="col">Chỉnh sửa</th>
           <th class="text-center" scope="col">Xóa</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let service of list_service | searchService: textSearch | paginate: { itemsPerPage: 2, currentPage: p }; let i=index;">
+        <tr *ngFor="let service of list_service | orderBy: key : reverse | searchService: textSearch | paginate: { itemsPerPage: perpages_number, currentPage: p }; let i=index;">
           <th scope="row">{{ i + 1 }}</th>
           <td>{{ service?.title_service }}</td>
           <td>{{ service?.name_user }}</td>

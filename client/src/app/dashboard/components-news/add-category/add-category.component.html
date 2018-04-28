@@ -55,13 +55,16 @@
           <thead>
             <tr class="text-dark">
               <th scope="col">STT</th>
-              <th scope="col">Tên chuyên mục</th>
+              <th scope="col" (click)="sort('name_category')">Tên chuyên mục
+                <span class="sort_1" *ngIf="key == 'name_category' && reverse"></span>
+                <span class="sort" *ngIf="key == 'name_category' && !reverse"></span>
+              </th>
               <th class="text-center" scope="col">Chỉnh sửa</th>
               <th class="text-center" scope="col">Xóa</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let categoryNews of listCategoryNews | searchCategoryNews : searchText; let i=index;" >
+            <tr *ngFor="let categoryNews of listCategoryNews | orderBy: key : reverse | searchCategoryNews : searchText; let i=index;" >
               <th scope="row">{{ i + 1 }}</th>
 
               <td (input)="changeValue(categoryNews.id_category, $event)">

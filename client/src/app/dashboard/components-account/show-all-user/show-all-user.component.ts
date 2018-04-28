@@ -13,19 +13,62 @@ export class ShowAllUserComponent implements OnInit {
   stt:Number = 0;
   constructor(private accountService: AccountService) { }
   
+  //sorting
+  key: string = 'type_account'; //set default
+  reverse: boolean = false;
+  sort(key){
+    if( this.key == key ) {
+      this.reverse = !this.reverse;
+    } else {
+      this.key = key;
+    }
+    
+  }
+
   ngOnInit() { 
+
+    // lấy danh sách tài khoản
     this.accountService.getAllUser()
     .then( res => this.list_user = res)
+    .then( () => {
+      this.list_user.forEach((element, i) => {
+        
+        // Thay đổi thành chữ để tìm kiếm
+        switch(this.list_user[i].type_account) {
+          case '1': this.list_user[i].type_account = 'Admin'; break;
+          case '2': this.list_user[i].type_account = 'Tiếp tân'; break;
+          case '3': this.list_user[i].type_account = 'Bác sĩ'; break;
+          case '4': this.list_user[i].type_account = 'Khách'; break;
+        }
+      });
+    }) // kết thúc lấy danh sách tài khoản
+
   }
-  // delete(id: Number){
-  //   // Thông báo xóa
-  //   if(confirm("Bạn thực sự muốn xóa !!")) {
-  //     this.newsService.delete(id)
-  //     .then( () => { 
-  //       this.newsService.get_list_newsAll()
-  //     .then( res => this.list_news = res)
-  //     });
-  //   }
-  // }
+
+  delete(id: Number){
+    // Thông báo xóa
+    if(confirm("Bạn thực sự muốn xóa !!")) {
+      this.accountService.deleteUser(id)
+      .then( () => { 
+        
+        // lấy danh sách tài khoản
+        this.accountService.getAllUser()
+        .then( res => this.list_user = res)
+        .then( () => {
+          this.list_user.forEach((element, i) => {
+            
+            // Thay đổi thành chữ để tìm kiếm
+            switch(this.list_user[i].type_account) {
+              case '1': this.list_user[i].type_account = 'Admin'; break;
+              case '2': this.list_user[i].type_account = 'Tiếp tân'; break;
+              case '3': this.list_user[i].type_account = 'Bác sĩ'; break;
+              case '4': this.list_user[i].type_account = 'Khách'; break;
+            }
+          });
+        }) // kết thúc lấy danh sách tài khoản
+
+      });
+    }
+  }
 
 }

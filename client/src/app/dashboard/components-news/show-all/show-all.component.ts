@@ -11,19 +11,21 @@ import { OrderPipe } from 'ngx-order-pipe';
 export class ShowAllComponent implements OnInit {
   // trang hiện tại
   p: number = 1;
-
+  perpages_number = 10;
 
   list_news;
   stt:Number = 0;
 
   //sorting
-  perpages_number = 3;
-
   key: string = 'status'; //set default
   reverse: boolean = false;
   sort(key){
-    this.key = key;
-    this.reverse = !this.reverse;
+    if( this.key == key ) {
+      this.reverse = !this.reverse;
+    } else {
+      this.key = key;
+    }
+    
   }
 
   constructor(private newsService: NewsService, private orderPipe: OrderPipe) { }

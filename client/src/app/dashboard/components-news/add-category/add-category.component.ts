@@ -9,6 +9,18 @@ export class AddCategoryComponent implements OnInit {
   listCategoryNews;
   isEdit: boolean = true;
   isErrAdd: boolean = false;
+
+  //sorting
+  key: string = 'name_category'; //set default
+  reverse: boolean = false;
+  sort(key){
+    if( this.key == key ) {
+      this.reverse = !this.reverse;
+    } else {
+      this.key = key;
+    }
+  }
+  
   constructor(private categoryNews: CategoryNewsService) { }
 
   ngOnInit() {

@@ -17,6 +17,8 @@ import { AllInfoWebsiteComponent } from './components-info-website/all-info-webs
 import { SliderComponent } from './components-image/slider/slider.component';
 import { AdvertisementComponent } from './components-image/advertisement/advertisement.component';
 import { UpdateWorkingCalendarComponent } from './components-working-calendar-doctor/update-working-calendar/update-working-calendar.component';
+import { EditUserComponent } from './components-account/edit-user/edit-user.component';
+
 const routes: Routes = [
     {
         path: 'dashboard',
@@ -67,6 +69,11 @@ const routes: Routes = [
                 path:'register-user',
                 component: RegisterUserComponent
             }, 
+            {
+                // chỉnh sửa người dùng
+                path:'edit-user/:id',
+                component: EditUserComponent
+            },
             // giới thiệu website
             {   
                 // trang giới thiệu website
