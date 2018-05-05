@@ -30,7 +30,7 @@ export class AccountService {
     .then(res => res.text())
   }
 
-  getAccount(id: Number) {
+  getAccount(id: any) {
     return this.http.get(AppSettings.API_ENDPOINT + '/dashboard/account/get-account.php?id=' + id)
     .toPromise()
     .then(res => res.json())

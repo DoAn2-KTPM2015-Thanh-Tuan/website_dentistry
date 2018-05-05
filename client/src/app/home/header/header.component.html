@@ -33,15 +33,15 @@
                             <img src="assets/img/service1.jpg" alt="" width="40px" height="40px">
                         </div> -->
                         <div class="name">
-                            Xin chào: Thành Ngu
+                            Xin chào: {{ info_account?.name_user }}
                         </div>
                         <div class="wrap-item">
                             <div class="icon" (click)="isShow = !isShow">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
                             <ul [ngClass]="isShow ? 'show': ''">
-                                <li class="item"><a href="">Lịch sử khám</a></li>
-                                <li class="item"><a href="">Thông tin tài khoản</a></li>
-                                <li class="item"><a href="">Đặt lịch khám</a></li>
-                                <li class="item"><a href="">Thoát</a></li>
+                                <li class="item"><a routerLink="/profile-customer/info-account">Thông tin tài khoản</a></li>
+                                <li class="item"><a routerLink="/profile-customer/registration">Đặt lịch khám</a></li>
+                                <li class="item"><a routerLink="/profile-customer/change-password">Đổi mật khẩu</a></li>
+                                <li class="item"><a (click)="logOut();">Thoát</a></li>
                             </ul>
                         </div> 
                     </div>
@@ -69,31 +69,26 @@
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Trang chủ</a>
                         </li>
+
+                        <!-- giới thiệu -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" routerLinkActive="active" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" routerLinkActive="active" routerLink="/introduce" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Giới thiệu
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">GIỚI THIỆU UCARE</a></li>
-                                <li><a class="dropdown-item" href="#">ĐỘI NGŨ NHẬN SỰ</a></li>
-                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/news-categorys" routerLinkActive="active">Tin Tức</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link" routerLink="/list-services" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link" routerLinkActive="active" routerLink="/list-services" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 Dịch vụ
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Bảng giá</a>
+                            <a class="nav-link" routerLink="/registration" routerLinkActive="active">Đăng kí khám</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" routerLink="/contact" routerLinkActive="active">Liên hệ</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" routerLink="/contact/registered">Đăng kí khám</a></li>
-                            </ul>
+                            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Liên hệ</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link" routerLink="/login" routerLinkActive="active">Đăng nhập - Đăng kí</a>

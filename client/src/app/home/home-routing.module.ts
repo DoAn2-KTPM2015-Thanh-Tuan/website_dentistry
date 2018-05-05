@@ -19,8 +19,11 @@ import { ProfileCustomerComponent } from './content/profile-customer/profile-cus
 import { InfoAccountComponent } from './content/components-profile-customer/info-account/info-account.component';
 import { HistoryComponent } from './content/components-profile-customer/history/history.component';
 import { AuthCustomerGuard } from '../home/shared/gruads/auth-customer.guard';
-import { DetailServiceComponent } from './content/main/detail-service/detail-service.component';
-import { ListServicesPageComponent } from './content/main/list-services-page/list-services-page.component';
+import { ListServicesPageComponent } from './content/main/components-service/list-services-page/list-services-page.component';
+import { RegistrationComponent } from './content/components-profile-customer/registration/registration.component';
+import { IntroduceComponent } from './content/main/introduce/introduce.component';
+import { ServicePageComponent } from './content/main/components-service/service-page/service-page.component';
+import { ChangePasswordComponent } from './content/components-profile-customer/change-password/change-password.component'; 
 
 const routes: Routes = [
   {
@@ -52,18 +55,16 @@ const routes: Routes = [
             path: 'news-categorys/:id-category/:id',
             component: NewsComponent,
           },
+          // liên hệ
           {
             path: 'contact',
-            children: [
-              {
-                path: '',
-                component:  ContactComponent,
-              },
-              {
-                path: 'registered',
-                component:  RegisteredComponent,
-              }
-            ]
+            component:  ContactComponent,
+              
+          },
+          // đăng kí khám
+          {
+            path: 'registration',
+            component:  RegisteredComponent,
           },
           // Đăng nhập
           {
@@ -75,6 +76,11 @@ const routes: Routes = [
             path: 'register',
             component:  RegisterUserComponent
           },
+          // giới thiệu
+          {
+            path: 'introduce',
+            component:  IntroduceComponent
+          },
           // Profile Customer
           {
             path: 'profile-customer',
@@ -83,33 +89,48 @@ const routes: Routes = [
             children: [
               {
                 path: '',
-                redirectTo: 'history',
+                redirectTo: 'info-account',
                 pathMatch: 'full'
               },
+              // thong tin tài khoản
               {
                 path: 'info-account',
                 component: InfoAccountComponent
               },
+              // lịch sử khám
               {
                 path: 'history',
                 component: HistoryComponent
               },
+              // đăng kí lịch khám
               {
-                path: 'registered',
-                component: RegisteredComponent
+                path: 'registration',
+                component: RegistrationComponent
               },
+              // thẩy đổi mật khẩu
+              {
+                path: 'change-password',
+                component: ChangePasswordComponent
+              }
             ]
           },
           // list-services-page
           {
             path: 'list-services',
-            component: ListServicesPageComponent
-          },
-          // service-detail
-          {
-            path: 'detail-service/:id',
-            component: DetailServiceComponent
+            children: [
+              {
+                path: '',
+                component: ListServicesPageComponent
+              },
+              // service-detail
+              {
+                path: 'detail-service/:id',
+                component: ServicePageComponent
+              }
+            ]
           }
+
+
         ]
       },
     ]

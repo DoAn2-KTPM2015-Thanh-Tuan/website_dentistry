@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthCustomerService } from '../../shared/gruads/auth-customer.service';
 
 @Component({
   selector: 'app-profile-customer',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileCustomerComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthCustomerService) { }
 
   ngOnInit() {
+  }
+
+  logOut(){
+    this.auth.logout();
   }
 
 }

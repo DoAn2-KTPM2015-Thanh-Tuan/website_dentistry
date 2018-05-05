@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthCustomerService } from '../shared/gruads/auth-customer.service';
 import { InfoWebsiteService } from '../shared/services/info-website.service';
+import { AccountService } from '../../dashboard/shared/services/account.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -23,14 +24,26 @@ export class HeaderComponent implements OnInit {
   address: String;
   phone_number: String;
   logo: String;
+
+  // id tài khoản
+  id_account: any;
+  info_account: any;
   constructor(private auth: AuthCustomerService,
-  private infoWebsiteService: InfoWebsiteService) { }
+  private infoWebsiteService: InfoWebsiteService,
+  private account: AccountService) { }
 
   ngOnInit() {
+
+    //
       this.auth.authInfo$.subscribe(authInfo => {
         this.Info = authInfo;
         this.isLogin =  this.auth.authInfo$.getValue().IsLogin();
-        console.log(this.isLogin);
+        
+        
+        // lấy thông tin khách hàng đăng nhập
+        this.id_account = this.auth.authInfo$.getValue().$uid;
+        this.account.getAccount(this.id_account)
+        .then( res => { this.info_account = res[0]; } )
       });
       
       // lấy thông tin website
@@ -76,6 +89,11 @@ export class HeaderComponent implements OnInit {
       
 
     
+  }
+
+  // đăng xuất
+  logOut() {
+    this.auth.logout();
   }
 
 }

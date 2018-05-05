@@ -4,16 +4,19 @@
       <!-- list option -->
       <ul class="list-group">
         <li class="list-group-item title">Thông tin khách hàng</li>
+
         <li class="list-group-item item">
-          <a href="" routerLink="/profile-customer/history" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Lịch Sử Khám</a>
+          <a routerLink="/profile-customer/info-account" routerLinkActive="active">Thông tin tài khoản</a>
         </li>
         <li class="list-group-item item">
-          <a href="" routerLink="/profile-customer/info-account" routerLinkActive="active">Thông tin tài khoản</a>
+            <a routerLink="/profile-customer/registration" routerLinkActive="active">Đăng kí khám</a>
         </li>
+
         <li class="list-group-item item">
-            <a href="" routerLink="/profile-customer/registered" routerLinkActive="active">Đăng kí khám</a>
+            <a routerLink="/profile-customer/change-password" routerLinkActive="active">Đổi mật khẩu</a>
         </li>
-        <li class="list-group-item item">
+
+        <li class="list-group-item item" (click)="logOut();">
           <a>Thoát</a>
         </li>
       </ul>

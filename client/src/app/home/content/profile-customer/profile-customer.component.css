@@ -41,3 +41,6 @@
     box-sizing: border-box;
     padding: 0 15px
 }
+ul li a{
+    cursor: pointer;
+}

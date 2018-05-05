@@ -7,25 +7,25 @@
             <i class="fa fa-bookmark"></i>
           </span>
           <span class="text">
-            {{ listsNews?.title }}
+            Các dịch vụ
           </span>
         </div>
       </div>
       <!-- end title -->
       <!-- item -->
-      <div class="col-12" *ngFor="let news of listsNews?.children_news">
+      <div class="col-12" *ngFor="let service of listService">
         <div class="item">
             <div class="row content">
               <div class="left col-3">
                 <figure>
-                  <img src="{{ news.image_news }}" alt="" width="100%">
+                  <img src="{{ service.image_service }}" alt="" width="100%">
                 </figure>
               </div>
               <div class="right col-9">
                 <!-- tiêu đề tin tức -->
                 <div class="titile-content">
                     <div class="text">
-                      <a routerLink="/news-categorys/{{ listsNews?.id }}/{{ news.id_news }}">{{ news.title_news }}</a>
+                      <a routerLink="/list-services/detail-service/{{ service.id_service }}">{{ service.title_service }}</a>
                     </div>
                 </div>
                 <!-- end tiêu đề tin tức -->
@@ -36,7 +36,7 @@
                     </span>
                     
                     <span class="text">
-                      {{ news.time_news }}
+                      {{ service.time_service }}
                     </span>
                   </span>
                   <span class="wrap-author">
@@ -44,7 +44,7 @@
                           <i class="fa fa-pencil"></i>
                       </span>
                       <span class="text">
-                        {{ news.name_user }}
+                        {{ service.name_user }}
                       </span>
                   </span>
                   <span class="wrap-views">
@@ -52,13 +52,13 @@
                       <i class="fa fa-eye"></i>  
                     </span>
                     <span class="text">
-                      {{ news.view_news }}
+                      {{ service.view_service }}
                     </span>
                   </span>
                 </div>
                 <div class="text">
-                    {{ news.excerpt_news }}
-                    <a class="btn btn-primary" routerLink="/news-categorys/{{ listsNews?.id }}/{{ news.id_news }}">
+                    {{ service.excerpt_service }}
+                    <a class="btn btn-primary" routerLink="/list-services/detail-service/{{ service.id_service }}">
                       Chi tiết
                     </a>
                 </div>

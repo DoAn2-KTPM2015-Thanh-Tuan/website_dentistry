@@ -8,14 +8,28 @@ export class WorkingCalendarService {
 
   constructor(private http: Http) { }
 
-  updateWorkingCalendarDoctor(formData) {
+  updateWorkingCalendarDoctor(id, formData) {
 
     let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
     let options = new RequestOptions({ headers: headers, method: "post"});
 
-    return this.http.post(AppSettings.API_ENDPOINT + '/dashboard/working-calendar/update-working-calendar-doctor.php', formData, options)
+    return this.http.post(AppSettings.API_ENDPOINT + '/dashboard/working-calendar/update-working-calendar-doctor.php', {id, formData}, options)
     .toPromise()
     .then(res => res.text())
+  }
+
+  // lấy lịch khám của 1 bác sĩ theo id
+  getWorkingCalendarDoctor(id){
+    return this.http.get( AppSettings.API_ENDPOINT + '/dashboard/working-calendar/get-working-calendar-doctor.php?id=' + id )
+    .toPromise()
+    .then(res => res.json())
+  }
+
+  // lấy tất cả lịch khám
+  getWorkingCalendarDoctors(){
+    return this.http.get( AppSettings.API_ENDPOINT + '/dashboard/working-calendar/get-working-calendar-doctors.php' )
+    .toPromise()
+    .then(res => res.json())
   }
 
 }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AuthInfo } from './auth-info';
-import {Http, Response, Headers, RequestOptions} from '@angular/http';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { AppSettings } from '../AppSettings';
-import {Observable, Subject, BehaviorSubject} from "rxjs/Rx";
+import { Observable, Subject, BehaviorSubject } from "rxjs/Rx";
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -12,7 +13,10 @@ export class AuthCustomerService {
 
   authInfo$: BehaviorSubject<AuthInfo> = new BehaviorSubject<AuthInfo>(AuthCustomerService.UNKNOWN_USER);
 
-  constructor(private http: Http) { }
+  constructor(
+            private http: Http,
+            private router: Router) { }
+
 
   login(account: String, passwd: String){
     let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
@@ -29,6 +33,33 @@ export class AuthCustomerService {
       return resJson;
     })
     
+  }
+
+  // đăng xuất 
+  logout(){
+    const authInfo = new AuthInfo(null, null, null, null);
+    this.authInfo$.next(authInfo);
+    this.router.navigate(['/login']);
+  }
+
+  // kiểm tra mật khẩu hiện tại khi người dùng muốn đổi mật khẩu
+  checkPassOfAccount(id, password) {
+    let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+    let options = new RequestOptions({ headers: headers, method: "post"});
+
+    return this.http.post(AppSettings.API_ENDPOINT + '/home/register/check-password-user.php', {id, password}, options)
+    .toPromise()
+    .then(res => res.text())
+  }
+
+  // cập nhật mật khẩu của người dùng
+  updatePass(id, password) {
+    let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+    let options = new RequestOptions({ headers: headers, method: "post"});
+
+    return this.http.post(AppSettings.API_ENDPOINT + '/home/register/update-password-user.php', {id, password}, options)
+    .toPromise()
+    .then(res => res.text())
   }
 
 }

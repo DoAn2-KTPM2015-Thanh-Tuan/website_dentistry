@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/profile-customer']);
         } 
         // bác sĩ
-        else if(type_account == 3) {
+        else if(type_account == 3 || type_account == 2 || type_account == 1 ) {
           this.router.navigate(['/dashboard']);
         }
       }

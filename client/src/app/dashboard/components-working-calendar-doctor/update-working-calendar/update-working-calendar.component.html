@@ -22,32 +22,32 @@
             <th scope="row">Sáng</th>
             <!-- thứ 2 -->
             <td class="text-center">
-              <input type="checkbox" id="chk1" ngModel name="sang_hai">
+              <input type="checkbox" id="chk1" [checked]="working_calendar?.st2 == '1'" ngModel value="1" name="sang_hai">
               <label for="chk1"></label>
             </td>
             <!-- thứ 3 -->
             <td class="text-center">
-              <input type="checkbox" id="chk2" ngModel name="sang_ba">
+              <input type="checkbox" id="chk2" [checked]="working_calendar?.st3 == '1'" ngModel value="1" name="sang_ba">
               <label for="chk2"></label>
             </td>
             <!-- thứ 4 -->
             <td class="text-center">
-              <input type="checkbox" id="chk3" ngModel name="sang_tu">
+              <input type="checkbox" id="chk3" [checked]="working_calendar?.st4 == '1'" ngModel value="1" name="sang_tu">
               <label for="chk3"></label>
             </td>
             <!-- thứ 5 -->
             <td class="text-center">
-              <input type="checkbox" id="chk4" ngModel name="sang_nam">
+              <input type="checkbox" id="chk4" [checked]="working_calendar?.st5 == '1'" ngModel value="1" name="sang_nam">
               <label for="chk4"></label>
             </td>
             <!-- thứ 6 -->
             <td class="text-center">
-              <input type="checkbox" id="chk5" ngModel name="sang_sau">
+              <input type="checkbox" id="chk5" [checked]="working_calendar?.st6 == '1'" ngModel value="1" name="sang_sau">
               <label for="chk5"></label>
             </td>
             <!-- thứ 7 -->
             <td class="text-center">
-              <input type="checkbox" id="chk6"  ngModel name="sang_bay">
+              <input type="checkbox" id="chk6" [checked]="working_calendar?.st7 == '1'" ngModel value="1" name="sang_bay">
               <label for="chk6"></label>
             </td>
             
@@ -58,33 +58,68 @@
             <th scope="row">Chiều</th>
             <!-- thứ 2 -->
             <td class="text-center">
-              <input type="checkbox" id="chk7" ngModel name="chieu_hai">
+              <input type="checkbox" id="chk7" [checked]="working_calendar?.ct2 == '1'" ngModel value="1" name="chieu_hai">
               <label for="chk7"></label>
             </td>
             <!-- thứ 3 -->
             <td class="text-center">
-              <input type="checkbox" id="chk9"  ngModel name="chieu_ba">
+              <input type="checkbox" id="chk9" [checked]="working_calendar?.ct3 == '1'" ngModel value="1" name="chieu_ba">
               <label for="chk9"></label>
             </td>
             <!-- thứ 4 -->
             <td class="text-center">
-              <input type="checkbox" id="chk10" ngModel name="chieu_tu">
+              <input type="checkbox" id="chk10" [checked]="working_calendar?.ct4 == '1'" ngModel value="1" name="chieu_tu">
               <label for="chk10"></label>
             </td>
             <!-- thứ 5 -->
             <td class="text-center">
-              <input type="checkbox" id="chk11" ngModel name="chieu_nam">
+              <input type="checkbox" id="chk11" [checked]="working_calendar?.ct5 == '1'" ngModel value="1" name="chieu_nam">
               <label for="chk11"></label>
             </td>
             <!-- thứ 6 -->
             <td class="text-center">
-              <input type="checkbox" id="chk12" ngModel name="chieu_sau">
+              <input type="checkbox" id="chk12" [checked]="working_calendar?.ct6 == '1'" ngModel value="1" name="chieu_sau">
               <label for="chk12"></label>
             </td>
             <!-- thứ 7 -->
             <td class="text-center">
-              <input type="checkbox" id="chk13" ngModel name="chieu_bay">
+              <input type="checkbox" id="chk13" [checked]="working_calendar?.ct7 == '1'" ngModel value="1" name="chieu_bay">
               <label for="chk13"></label>
+            </td>
+          </tr>
+
+          <!-- Tối -->
+          <tr>
+            <th scope="row">Chiều</th>
+            <!-- thứ 2 -->
+            <td class="text-center">
+              <input type="checkbox" id="chk14" [checked]="working_calendar?.tt2 == '1'" ngModel value="1" value="1"odel name="toi_hai">
+              <label for="chk14"></label>
+            </td>
+            <!-- thứ 3 -->
+            <td class="text-center">
+              <input type="checkbox" id="chk15" [checked]="working_calendar?.tt3 == '1'" ngModel value="1" name="toi_ba">
+              <label for="chk15"></label>
+            </td>
+            <!-- thứ 4 -->
+            <td class="text-center">
+              <input type="checkbox" id="chk16" [checked]="working_calendar?.tt4 == '1'" ngModel value="1" name="toi_tu">
+              <label for="chk16"></label>
+            </td>
+            <!-- thứ 5 -->
+            <td class="text-center">
+              <input type="checkbox" id="chk17" [checked]="working_calendar?.tt5 == '1'" ngModel value="1" name="toi_nam">
+              <label for="chk17"></label>
+            </td>
+            <!-- thứ 6 -->
+            <td class="text-center">
+              <input type="checkbox" id="chk18" [checked]="working_calendar?.tt6 == '1'" ngModel value="1" name="toi_sau">
+              <label for="chk18"></label>
+            </td>
+            <!-- thứ 7 -->
+            <td class="text-center">
+              <input type="checkbox" id="chk19" [checked]="working_calendar?.tt7 == '1'" ngModel value="1" name="toi_bay">
+              <label for="chk19"></label>
             </td>
           </tr>
         </tbody>

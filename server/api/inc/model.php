@@ -18,7 +18,7 @@ function get_data($tables, $condition) {
     $db =  Database::db_close();
     $db = Database::connect();
     
-    $query = "SELECT * FROM $tables WHERE $condition";
+    $query = "SELECT * FROM $tables WHERE $condition";    
     $stmt = $db->prepare($query);
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -75,6 +75,60 @@ function insertUser($name, $password, $id_position, $account, $phone, $email, $a
     return $result;
 }   
 
+// cập nhật thông tin người dùng ( khách hàng)
+function update_user($id_account, $name, $phone, $email, $address){
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+    $query = "UPDATE tb_account
+                SET name_user = '$name',
+                    phone_user = '$phone',
+                    email_user = '$email',
+                    address_user = '$address'
+                    WHERE id_account = '$id_account'";
+
+                    echo $query;
+
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
+
+// kiểm tra mật khẩu khi đổi mật khẩu
+function check_password_account($id, $password){
+
+    $db =  Database::db_close();
+    $db = Database::connect();
+    $query = "SELECT id_account 
+                FROM tb_account
+                WHERE id_account = '$id' AND pass_account = '$password'";
+
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+
+}
+
+// cập nhật mật khẩu của tài khoản
+function update_password_account($id, $password){
+
+    $db =  Database::db_close();
+    $db = Database::connect();
+    $query = "UPDATE tb_account 
+              SET pass_account = '$password'
+              WHERE id_account = '$id'";
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+
+}
+
 // kiểm tra tài khoản có tồn tại không (khi tạo tài khoản)
 function check_exist_account($name_account){
     $db =  Database::db_close();
@@ -88,6 +142,8 @@ function check_exist_account($name_account){
     $stmt->closeCursor();
     return $result;
 }
+
+
 
 // kiểm tra đăng nhập
 function check_login($name_account, $password){
@@ -519,31 +575,33 @@ function insertAdvertisement($order, $link_img){
 
 }
 
-function updateWorkingCalendarDoctor($st2, $ct2,
-                                    $st3, $ct3, 
-                                    $st4, $ct4, 
-                                    $st5, $ct5,
-                                    $st6, $ct6,
-                                    $st7, $ct7) {
+function insertTimeTableDoctor(     $id_doctor,
+                                    $st2, $ct2, $tt2,
+                                    $st3, $ct3, $tt3,
+                                    $st4, $ct4, $tt4,
+                                    $st5, $ct5, $tt5,
+                                    $st6, $ct6, $tt6,
+                                    $st7, $ct7, $tt7) {
     $db =  Database::db_close();
     $db = Database::connect();
 
 
-     $query = "INSERT INTO tb_working_calendar(
-                            st2, ct2,
-                            st3, ct3,
-                            st4, ct4,
-                            st5, ct5,
-                            st6, ct6,
-                            st7, ct7
-                            ) VALUES($st2, $ct2,
-                                    $st3, $ct3, 
-                                    $st4, $ct4, 
-                                    $st5, $ct5,
-                                    $st6, $ct6,
-                                    $st7, $ct7)";
-
-
+     $query = "INSERT INTO tb_timetable(
+                            id_account,
+                            st2, ct2, tt2,
+                            st3, ct3, tt3,
+                            st4, ct4, tt4,
+                            st5, ct5, tt5,
+                            st6, ct6, tt6,
+                            st7, ct7, tt7
+                            ) VALUES(   
+                                    $id_doctor,
+                                    $st2, $ct2, $tt2,
+                                    $st3, $ct3, $tt3,
+                                    $st4, $ct4, $tt4,
+                                    $st5, $ct5, $tt5,
+                                    $st6, $ct6, $tt6,
+                                    $st7, $ct7, $tt7)";
     $stmt = $db->prepare($query); 
     $stmt->execute(); 
     $result = $stmt->rowCount();
@@ -601,6 +659,7 @@ function updateAccount($id_account, $name, $id_position, $phone, $email, $addres
     return $result;
 }  
 
+// reset password ( mật khẩu mật định là 11111111 )
 function resetAccount($id) {
     $db =  Database::db_close();
     $db = Database::connect();
@@ -618,5 +677,97 @@ function resetAccount($id) {
     return $result;
 } 
 
+// kiểm tra lịch có tồn tại chưa
+function checkExistWordkingCalendar($id){
+    $db =  Database::db_close();
+    $db = Database::connect();
 
+    $query = "SELECT * 
+                FROM tb_timetable
+                WHERE id_account = '$id'";
+    $stmt = $db->prepare($query);
+
+    $stmt->execute();
+
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
+// 
+function updateWorkingCalendarDoctor($id_doctor,
+                                    $st2, $ct2, $tt2,
+                                    $st3, $ct3, $tt3,
+                                    $st4, $ct4, $tt4,
+                                    $st5, $ct5, $tt5,
+                                    $st6, $ct6, $tt6,
+                                    $st7, $ct7, $tt7){
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+
+     $query = "UPDATE tb_timetable
+                SET st2 = '$st2', ct2 = '$ct2', tt2 = '$tt2',
+                st3 = '$st3', ct3 = '$ct3', tt3 = '$tt3',
+                st4 = '$st4', ct4 = '$ct4', tt4 = '$tt4',
+                st5 = '$st5', ct5 = '$ct5', tt5 = '$tt5',
+                st6 = '$st6', ct6 = '$ct6', tt6 = '$tt6',
+                st7 = '$st7', ct7 = '$ct7', tt7 = '$tt7'
+                WHERE id_account = '$id_doctor'";
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+
+}
+function getDoctorRegistration($condition){
+
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+
+     $query = "SELECT id_account
+                FROM tb_timetable
+                WHERE $condition = '1'";
+
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $result;
+   
+}
+
+// gửi đăng kí khám
+function sendRegistration($name, $email, $phone, $address, $date, $time, $content, $id_doctor){
+
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+
+     $query = "INSERT INTO tb_registration(
+                            name_customer,
+                            phone_customer,
+                            email_customer,
+                            address_customer,
+                            date_customer,
+                            time_customer,
+                            content,
+                            doctor
+                            ) VALUES(   
+                            '$name',
+                            '$phone',
+                            '$email',
+                            '$address',
+                            '$date',
+                            '$time',
+                            '$content',
+                            $id_doctor)";
+                            echo $query;
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
 ?>

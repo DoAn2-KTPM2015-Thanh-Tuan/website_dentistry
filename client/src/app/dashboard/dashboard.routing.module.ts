@@ -18,7 +18,9 @@ import { SliderComponent } from './components-image/slider/slider.component';
 import { AdvertisementComponent } from './components-image/advertisement/advertisement.component';
 import { UpdateWorkingCalendarComponent } from './components-working-calendar-doctor/update-working-calendar/update-working-calendar.component';
 import { EditUserComponent } from './components-account/edit-user/edit-user.component';
-
+import { ShowAllWorkingCalendarDoctorsComponent } from './components-working-calendar-doctor/show-all-working-calendar-doctors/show-all-working-calendar-doctors.component';
+import { MyAccountInfoComponent } from './components-account/my-account-info/my-account-info.component';
+import { PasswordChangingComponent } from './components-account/password-changing/password-changing.component';
 const routes: Routes = [
     {
         path: 'dashboard',
@@ -74,6 +76,16 @@ const routes: Routes = [
                 path:'edit-user/:id',
                 component: EditUserComponent
             },
+            {
+                // thông tin tài khoản của tôi
+                path:'my-account-info',
+                component: MyAccountInfoComponent
+            },
+            {
+                // thay đổi mật khẩu tài khoản của tôi
+                path:'password-changing',
+                component: PasswordChangingComponent
+            },
             // giới thiệu website
             {   
                 // trang giới thiệu website
@@ -100,7 +112,13 @@ const routes: Routes = [
                 // cập nhật lịch làm việc của bác sĩ
                 path:'update-working-calendar',
                 component: UpdateWorkingCalendarComponent
-            }
+            },
+            {
+                // hiển thị lịch khám của tất cả bác sĩ
+                path:'show-all-working-calendar-doctors',
+                component: ShowAllWorkingCalendarDoctorsComponent
+            },
+            
         ]
     },
     

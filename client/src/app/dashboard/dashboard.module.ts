@@ -43,6 +43,9 @@ import { UpdateWorkingCalendarComponent } from './components-working-calendar-do
 import { WorkingCalendarService } from './shared/services/working-calendar.service';
 import { SearchAccountPipe } from './shared/pipes/search-account.pipe';
 import { EditUserComponent } from './components-account/edit-user/edit-user.component';
+import { ShowAllWorkingCalendarDoctorsComponent } from './components-working-calendar-doctor/show-all-working-calendar-doctors/show-all-working-calendar-doctors.component';
+import { MyAccountInfoComponent } from './components-account/my-account-info/my-account-info.component';
+import { PasswordChangingComponent } from './components-account/password-changing/password-changing.component';
 
 @NgModule({
   imports: [
@@ -80,6 +83,9 @@ import { EditUserComponent } from './components-account/edit-user/edit-user.comp
     UpdateWorkingCalendarComponent,
     SearchAccountPipe,
     EditUserComponent,
+    ShowAllWorkingCalendarDoctorsComponent,
+    MyAccountInfoComponent,
+    PasswordChangingComponent,
   ],
   providers: [AuthCustomerGuard, NewsService, CategoryNewsService, ServiceService, AccountService, InfoWebsiteService, ImageAdvertisementService, WorkingCalendarService]
 })

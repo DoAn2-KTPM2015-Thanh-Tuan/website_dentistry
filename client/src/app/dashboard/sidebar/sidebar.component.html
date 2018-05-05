@@ -64,9 +64,22 @@
             </ul>
           </li>
 
+
           <!--lịch khám -->
-          <li routerLinkActive="active"><a routerLink="/dashboard/update-working-calendar"><i class="fa fa-calendar"></i>Lịch khám</a></li>
-          <!-- <li><a href="tables.html"> <i class="icon-grid"></i>Tables                             </a></li>-->
+          <li routerLinkActive="active"><a routerLink="/dashboard/update-working-calendar"><i class="fa fa-calendar"></i>Cập nhật lịch khám</a></li>
+
+          <!-- lịch khám của các bác sĩ -->
+          <li routerLinkActive="active"><a routerLink="/dashboard/show-all-working-calendar-doctors"><i class="fa fa-bookmark-o"></i>Lịch khám phòng nha</a></li>
+         
+          
+          <!-- Thông tin tài khoản -->
+          <li>
+            <a href="#myaccount" aria-expanded="false" data-toggle="collapse"><i class="fa fa-picture-o"></i>Tài khoản của tôi</a>
+            <ul id="myaccount" class="collapse list-unstyled ">
+              <li routerLinkActive="active"><a routerLink="/dashboard/my-account-info">Thông tin</a></li>
+              <li routerLinkActive="active"><a routerLink="/dashboard/password-changing">Đổi mật khẩu</a></li>
+            </ul>
+          </li>
             
           <!-- <li>
             <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Example dropdown </a>

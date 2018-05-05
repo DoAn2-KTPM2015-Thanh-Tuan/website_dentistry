@@ -33,15 +33,19 @@ import { NewsCategorysService } from './shared/services/news-categorys.service';
 import { ServiceService } from './shared/services/service.service';
 import { RegisterUserService } from './shared/services/register-user.service';
 import { AuthCustomerService } from './shared/gruads/auth-customer.service';
+import { RegistrationService } from './shared/services/registration.service';
 
 import { EscapeHtmlPipe } from './shared/pipes/keep-html.pipe';
 import { ProfileCustomerComponent } from './content/profile-customer/profile-customer.component';
 import { InfoAccountComponent } from './content/components-profile-customer/info-account/info-account.component';
 import { HistoryComponent } from './content/components-profile-customer/history/history.component';
 import { InfoWebsiteService } from './shared/services/info-website.service';
-import { DetailServiceComponent } from './content/main/detail-service/detail-service.component';
-import { ListServicesPageComponent } from './content/main/list-services-page/list-services-page.component';
-
+import { RegistrationComponent } from './content/components-profile-customer/registration/registration.component';
+import { DoctorService } from './shared/services/doctor.service';
+import { IntroduceComponent } from './content/main/introduce/introduce.component';
+import { ListServicesPageComponent } from './content/main/components-service/list-services-page/list-services-page.component';
+import { ServicePageComponent } from './content/main/components-service/service-page/service-page.component';
+import { ChangePasswordComponent } from './content/components-profile-customer/change-password/change-password.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -73,8 +77,11 @@ import { ListServicesPageComponent } from './content/main/list-services-page/lis
     ProfileCustomerComponent,
     InfoAccountComponent,
     HistoryComponent,
-    DetailServiceComponent,
-    ListServicesPageComponent
+    RegistrationComponent,
+    IntroduceComponent,
+    ListServicesPageComponent,
+    ServicePageComponent,
+    ChangePasswordComponent
   ],
   providers: [
     SliderService,
@@ -82,7 +89,9 @@ import { ListServicesPageComponent } from './content/main/list-services-page/lis
     ServiceService,
     RegisterUserService,
     AuthCustomerService,
-    InfoWebsiteService
+    InfoWebsiteService,
+    DoctorService,
+    RegistrationService
   ]
 })
 export class HomeModule { }

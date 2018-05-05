@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WorkingCalendarService } from '../../shared/services/working-calendar.service';
-
+import { AuthCustomerService } from '../../../home/shared/gruads/auth-customer.service';
 @Component({
   selector: 'app-update-working-calendar',
   templateUrl: './update-working-calendar.component.html',
@@ -8,15 +8,26 @@ import { WorkingCalendarService } from '../../shared/services/working-calendar.s
 })
 export class UpdateWorkingCalendarComponent implements OnInit {
 
-  constructor(private workingCalendarService: WorkingCalendarService) { }
-
+  working_calendar: any;
+  id_doctor;
+  constructor(
+    private workingCalendarService: WorkingCalendarService,
+    private auth: AuthCustomerService) { }
+    
   ngOnInit() {
+    this.id_doctor = this.auth.authInfo$.getValue().$uid;
+    
+    this.workingCalendarService.getWorkingCalendarDoctor(this.id_doctor)
+    .then(res => {this.working_calendar = res; console.log(this.working_calendar)})
+
   }
 
   submit(form) {
     console.log(form.value);
-    this.workingCalendarService.updateWorkingCalendarDoctor(form.value)
-    .then( res => console.log(res) );
+    this.workingCalendarService.updateWorkingCalendarDoctor(this.id_doctor, form.value)
+    .then( res => alert("Cập nhật thành công !!") );
   }
+
+  
 
 }
