@@ -21,6 +21,10 @@ import { EditUserComponent } from './components-account/edit-user/edit-user.comp
 import { ShowAllWorkingCalendarDoctorsComponent } from './components-working-calendar-doctor/show-all-working-calendar-doctors/show-all-working-calendar-doctors.component';
 import { MyAccountInfoComponent } from './components-account/my-account-info/my-account-info.component';
 import { PasswordChangingComponent } from './components-account/password-changing/password-changing.component';
+import { ShowRegistrationComponent } from './components-registration/show-registration/show-registration.component';
+import { EditRegistrationComponent } from './components-registration/edit-registration/edit-registration.component';
+import { ShowContactComponent } from './components-contact/show-contact/show-contact.component';
+import { SeeContactComponent } from './components-contact/see-contact/see-contact.component';
 const routes: Routes = [
     {
         path: 'dashboard',
@@ -117,6 +121,26 @@ const routes: Routes = [
                 // hiển thị lịch khám của tất cả bác sĩ
                 path:'show-all-working-calendar-doctors',
                 component: ShowAllWorkingCalendarDoctorsComponent
+            },
+            {
+                // hiển thị danh sách đăng kí khám
+                path:'show-registration',
+                component: ShowRegistrationComponent
+            },
+            {
+                // xem đăng kí khám
+                path:'edit-registration/:id',
+                component: EditRegistrationComponent
+            },
+            {
+                // hiện đi danh sách liên hệ
+                path:'show-contact',
+                component: ShowContactComponent
+            },
+            {
+                // xem liên hệ
+                path:'see-contact/:id',
+                component: SeeContactComponent
             },
             
         ]

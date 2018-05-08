@@ -46,6 +46,14 @@ import { EditUserComponent } from './components-account/edit-user/edit-user.comp
 import { ShowAllWorkingCalendarDoctorsComponent } from './components-working-calendar-doctor/show-all-working-calendar-doctors/show-all-working-calendar-doctors.component';
 import { MyAccountInfoComponent } from './components-account/my-account-info/my-account-info.component';
 import { PasswordChangingComponent } from './components-account/password-changing/password-changing.component';
+import { ShowRegistrationComponent } from './components-registration/show-registration/show-registration.component';
+import { RegistrationService } from './shared/services/registration.service';
+import { SearchRegistrationPipe } from './shared/pipes/search-registration.pipe';
+import { EditRegistrationComponent } from './components-registration/edit-registration/edit-registration.component';
+import { DoctorService } from './shared/services/doctor.service';
+import { ShowContactComponent } from './components-contact/show-contact/show-contact.component';
+import { SearchContactPipe } from './shared/pipes/search-contact.pipe';
+import { SeeContactComponent } from './components-contact/see-contact/see-contact.component';
 
 @NgModule({
   imports: [
@@ -86,7 +94,20 @@ import { PasswordChangingComponent } from './components-account/password-changin
     ShowAllWorkingCalendarDoctorsComponent,
     MyAccountInfoComponent,
     PasswordChangingComponent,
+    ShowRegistrationComponent,
+    SearchRegistrationPipe,
+    EditRegistrationComponent,
+    ShowContactComponent,
+    SearchContactPipe,
+    SeeContactComponent
   ],
-  providers: [AuthCustomerGuard, NewsService, CategoryNewsService, ServiceService, AccountService, InfoWebsiteService, ImageAdvertisementService, WorkingCalendarService]
+  providers: [AuthCustomerGuard, 
+    NewsService, 
+    CategoryNewsService, 
+    ServiceService, 
+    AccountService, 
+    InfoWebsiteService, 
+    ImageAdvertisementService, 
+    WorkingCalendarService, RegistrationService, DoctorService]
 })
 export class DashboardModule { }

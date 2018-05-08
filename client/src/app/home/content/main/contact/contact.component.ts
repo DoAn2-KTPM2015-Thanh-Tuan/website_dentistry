@@ -1,14 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
-
+import { ContactService } from '../../../shared/services/contact.service';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  constructor() {}
+  
+  // thông báo khi gửi thành công
+  alertSuccess: boolean = false;
+
+  constructor(private contactService: ContactService) {}
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
 
@@ -41,4 +45,20 @@ export class ContactComponent implements OnInit {
     this.map.setCenter(new google.maps.LatLng(this.latitude, this.longitude));
   }
 
+
+
+  // Gửi liên hệ
+  onSubmit(formData) {
+    
+    if(formData.valid){
+
+      this.contactService.sendFormContact(formData.value)
+      .then( (res) => {
+        this.alertSuccess = true;
+        formData.resetForm();
+      })
+    }
+  }
+
 }
+

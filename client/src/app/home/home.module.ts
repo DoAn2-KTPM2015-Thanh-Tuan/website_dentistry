@@ -46,6 +46,7 @@ import { IntroduceComponent } from './content/main/introduce/introduce.component
 import { ListServicesPageComponent } from './content/main/components-service/list-services-page/list-services-page.component';
 import { ServicePageComponent } from './content/main/components-service/service-page/service-page.component';
 import { ChangePasswordComponent } from './content/components-profile-customer/change-password/change-password.component';
+import { ContactService } from './shared/services/contact.service';
 @NgModule({
   imports: [
     CommonModule,
@@ -91,7 +92,8 @@ import { ChangePasswordComponent } from './content/components-profile-customer/c
     AuthCustomerService,
     InfoWebsiteService,
     DoctorService,
-    RegistrationService
+    RegistrationService,
+    ContactService
   ]
 })
 export class HomeModule { }

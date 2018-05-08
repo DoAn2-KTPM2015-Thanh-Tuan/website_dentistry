@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistrationService } from '../../../../shared/services/registration.service';
+import { WorkingCalendarService } from '../../../../../dashboard/shared/services/working-calendar.service';
 @Component({
   selector: 'app-registered',
   templateUrl: './registered.component.html',
@@ -9,9 +10,17 @@ export class RegisteredComponent implements OnInit {
   content: any = '';
   alertSuccess: boolean = false;
   id_doctoc: any;
-  constructor(private registraionService: RegistrationService) { }
+
+  // lịch khám 
+  working_calendar: any;
+  constructor(private registraionService: RegistrationService,
+              private workingCalendarService: WorkingCalendarService) { }
 
   ngOnInit() {
+
+    // lấy lịch khám của các bác sĩ
+    this.workingCalendarService.getWorkingCalendarDoctors()
+    .then( res => this.working_calendar = res )
     
   }
   onSubmit(formData){

@@ -30,3 +30,14 @@
 #registered .wrap-form label{
     font-weight: 700;
 }
+
+.title-calendar{
+    color: #056d4ee8;
+    font-size: 30px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.tb-calendar{
+    margin-left: -25%;
+}

@@ -763,11 +763,101 @@ function sendRegistration($name, $email, $phone, $address, $date, $time, $conten
                             '$time',
                             '$content',
                             $id_doctor)";
-                            echo $query;
     $stmt = $db->prepare($query); 
     $stmt->execute(); 
     $result = $stmt->rowCount();
     $stmt->closeCursor();
     return $result;
 }
+
+// cập nhật đăng kí khám
+function updateRegistration($id_registration,$name, $email, $phone, $address, $date, $time, $content, $id_doctor){
+
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+
+     $query = "UPDATE tb_registration
+                SET name_customer = '$name',
+                    phone_customer = '$phone',
+                    email_customer = '$email',
+                    address_customer = '$address',
+                    date_customer = '$date',
+                    time_customer = '$time',
+                    content = '$content',
+                    doctor = '$id_doctor'
+                WHERE id_registration = '$id_registration'";
+
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
+// xóa đăng kí khám theo id
+function deteleRegistration( $id_registration ) {
+    $db =  Database::db_close();
+    $db = Database::connect();
+   
+    $query = "DELETE FROM tb_registration 
+                    WHERE id_registration = :id_registration";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':id_registration', $id_registration, PDO::PARAM_INT);    
+ 
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
+
+// gửi liên hệ 
+
+function sendContact($name, $email, $phone, $address, $title, $content, $date) {
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+    $query = "INSERT INTO tb_contact(name_contact,
+                            phone_contact,
+                            address_contact,
+                            email_contact,
+                            title_contact,
+                            describe_contact,
+                            time_contact) VALUES(
+                            :name_contact,
+                            :phone_contact,
+                            :address_contact,
+                            :email_contact,
+                            :title_contact,
+                            :describe_contact,
+                            :time_contact)";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':name_contact', $name, PDO::PARAM_STR);    
+    $stmt->bindParam(':phone_contact', $phone, PDO::PARAM_STR);
+    $stmt->bindParam(':address_contact', $address, PDO::PARAM_STR);
+    $stmt->bindParam(':email_contact', $email, PDO::PARAM_STR);
+    $stmt->bindParam(':title_contact', $title, PDO::PARAM_STR);
+    $stmt->bindParam(':describe_contact', $content, PDO::PARAM_STR);
+    $stmt->bindParam(':time_contact', $date);
+
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}  
+
+// xóa liên hệ
+function deleteContact($id_contact){
+    $db =  Database::db_close();
+    $db = Database::connect();
+   
+    $query = "DELETE FROM tb_contact 
+                    WHERE id_contact = :id_contact";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':id_contact', $id_contact, PDO::PARAM_INT);    
+ 
+    $stmt->execute();
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+} 
 ?>

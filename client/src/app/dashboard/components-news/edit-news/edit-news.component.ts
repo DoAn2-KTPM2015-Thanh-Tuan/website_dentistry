@@ -61,7 +61,6 @@ export class EditNewsComponent implements OnInit {
   
   onSubmit(formAddNews){
 
-    console.log(formAddNews)
       // nếu form đã điền đủ thông tin
       if( formAddNews.valid ){
         const formData = new FormData();
@@ -69,7 +68,6 @@ export class EditNewsComponent implements OnInit {
         // Kiem tra file img 
         if (this.file_data == null) {
             this.file_data  = this.linkDefaultImg;
-            console.log(this.file_data, null);
         }
 
         // data send to server
