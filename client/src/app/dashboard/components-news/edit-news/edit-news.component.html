@@ -82,14 +82,6 @@
               <!-- img default -->
               <img [src]="linkDefaultImg" class="img-default" alt="img">
 
-              <!-- <input type="file" 
-              class="form-control-file custom-file-input" 
-              id="validatedCustomFile"
-              name="fileImg"
-              (change)="onChange($event)"
-              ngModel
-              #fileImg="ngModel"
-              > -->
               <div class="custom-file">
                   <input type="file" 
                   class="form-control-file custom-file-input" 
@@ -163,6 +155,7 @@
             </div>
             <!-- end item -->
           </div>
+
         </div>
         
         <!-- Đăng Bài Viết  -->
@@ -176,7 +169,7 @@
               <div class="icon"><i class="fa fa-key"></i></div>
               <div class="text">Trạng thái: <span class="text-bold">
                 {{ chosenOption == 0 ? 'Chờ xét duyệt' : 'Đã xét duyệt' }}
-                </span> <a class="edit" (click)="toggleShowDiv()">Chỉnh sửa</a>
+                </span> <a *ngIf="type_account == '1'" class="edit" (click)="toggleShowDiv()">Chỉnh sửa</a>
               </div>
               <!-- box-option  -->
               <div id="box-option" role="tabpanel" class="wrap-box-option d-flex mt-2" [@slideInOut]="animationState">
@@ -186,7 +179,7 @@
                 name="status" 
                 ngModel>
                   <option value="0" >Chờ xét duyệt</option>
-                  <option value="1">Đã xét duyệt</option>
+                  <option value="1" *ngIf="type_account == '1'">Đã xét duyệt</option>
                 </select>
                 <div class="ml-1 btn btn-default p-1" (click)="animationState='out'">Ok</div>
                 <div class="cancel d-flex align-items-center ml-1" (click)="animationState='out'">Hủy</div> 
@@ -195,7 +188,7 @@
             <!-- item -->
             <div class="item d-flex text-small flex-wrap">
               <div class="icon"><i class="fa fa-key"></i></div>
-              <div class="text">Người viết bài: <span class="text-bold">Lê Thanh Tuấn</span></div>
+              <div class="text">Người viết bài: <span class="text-bold">{{news?.name_user}}</span></div>
             </div>
           <!-- end item -->
             <div class="wrap-btn text-right">

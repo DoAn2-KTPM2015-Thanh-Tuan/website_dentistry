@@ -1,7 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { SlideInOutAnimation } from '../../shared/animate/slide-down';
 import { ServiceService } from '../../shared/services/service.service';
-
+import { AuthCustomerService } from '../../../home/shared/gruads/auth-customer.service';
 
 @Component({
   selector: 'app-add-new-service',
@@ -11,7 +11,13 @@ import { ServiceService } from '../../shared/services/service.service';
 })
 export class AddNewServiceComponent implements OnInit {
 
-  constructor(private serviceService: ServiceService) { }
+  constructor(private serviceService: ServiceService,
+              private authSevice: AuthCustomerService) { }
+
+  // id account người dùng đăng nhập
+  id_account;
+  // type_account người dùng đăng nhập
+  type_account;
 
   // Status
   chosenOption: string = '0';
@@ -58,7 +64,7 @@ export class AddNewServiceComponent implements OnInit {
         formData.append('describe_news', formAddService.value.textService);
         formData.append('file', this.file_data);
         formData.append('status', formAddService.value.status);
-        formData.append('idUser', '1');
+        formData.append('idUser', this.id_account);
 
         this.serviceService.insert_service(formData)
         .then( () => {
@@ -91,6 +97,10 @@ export class AddNewServiceComponent implements OnInit {
   
   ngOnInit() {
    
+    // lấy id người dùng đăng nhập
+    this.id_account = this.authSevice.authInfo$.getValue().$uid;
+    // lấy type account người dùng đăng nhập
+    this.type_account = this.authSevice.authInfo$.getValue().$type_account;
   }
 
 }

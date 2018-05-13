@@ -64,7 +64,7 @@ export class EditRegistrationComponent implements OnInit {
       data.append('date', formData.value.date);
       data.append('doctor', formData.value.doctor);
       data.append('content', formData.value.content);
-
+      data.append('status', '0');
       //gửi thông tin để cập nhật
       this.registrationSevice.updateRegisraion(data)
       .then( () => {

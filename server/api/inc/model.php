@@ -369,6 +369,25 @@ function updateViewService($id_service, $current_view){
 
 }
 
+// update view tin tức
+function updateViewNews($id_news, $current_view){
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+    $view_news = $current_view + 1;
+    $query = "UPDATE tb_news
+                SET view_news = :view_news
+                WHERE id_news = :id_news";
+    $stmt = $db->prepare($query); 
+    $stmt->bindParam(':id_news',  $id_news, PDO::PARAM_INT);
+    $stmt->bindParam(':view_news', $view_news, PDO::PARAM_INT); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+
+}
+
 // xóa loại tin tức
 function deleteNews($id_news){
     $db =  Database::db_close();
@@ -739,7 +758,7 @@ function getDoctorRegistration($condition){
 }
 
 // gửi đăng kí khám
-function sendRegistration($name, $email, $phone, $address, $date, $time, $content, $id_doctor){
+function sendRegistration($name, $email, $phone, $address, $date, $time, $content, $id_doctor, $status, $time_registration){
 
     $db =  Database::db_close();
     $db = Database::connect();
@@ -753,7 +772,9 @@ function sendRegistration($name, $email, $phone, $address, $date, $time, $conten
                             date_customer,
                             time_customer,
                             content,
-                            doctor
+                            doctor,
+                            time_registration,
+                            status
                             ) VALUES(   
                             '$name',
                             '$phone',
@@ -762,14 +783,47 @@ function sendRegistration($name, $email, $phone, $address, $date, $time, $conten
                             '$date',
                             '$time',
                             '$content',
-                            $id_doctor)";
+                            $id_doctor,
+                            '$time_registration',
+                            '$status')";
+
     $stmt = $db->prepare($query); 
     $stmt->execute(); 
     $result = $stmt->rowCount();
     $stmt->closeCursor();
     return $result;
 }
+// cập nhật trạng thái đăng kí khám
+function updateStatusRegistration($id_registration) {
+    $db =  Database::db_close();
+    $db = Database::connect();
 
+
+     $query = "UPDATE tb_registration
+                SET status = '1'
+                WHERE id_registration = '$id_registration'";
+
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
+// cập nhật trạng thái đăng kí khám ( tất cả )
+function updateStatusAllRegistration() {
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+
+     $query = "UPDATE tb_registration
+                SET status = '1'";
+
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
 // cập nhật đăng kí khám
 function updateRegistration($id_registration,$name, $email, $phone, $address, $date, $time, $content, $id_doctor){
 
@@ -860,4 +914,52 @@ function deleteContact($id_contact){
     $stmt->closeCursor();
     return $result;
 } 
+
+function getContact($id_contact){
+    $db =  Database::db_close();
+    $db = Database::connect();
+   
+    $query = "SELECT *
+                FROM tb_contact
+                WHERE id_contact = :id_contact";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam(':id_contact', $id_contact, PDO::PARAM_INT);    
+ 
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $result;
+} 
+
+// cập nhật trạng thái liên hệ
+function updateStatusContact($id_contact) {
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+
+     $query = "UPDATE tb_contact
+                SET status = '1'
+                WHERE id_contact = '$id_contact'";
+
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
+// cập nhật trạng thái liên hệ ( tất cả )
+function updateStatusAllContact() {
+    $db =  Database::db_close();
+    $db = Database::connect();
+
+
+     $query = "UPDATE tb_contact
+                SET status = '1'";
+
+    $stmt = $db->prepare($query); 
+    $stmt->execute(); 
+    $result = $stmt->rowCount();
+    $stmt->closeCursor();
+    return $result;
+}
 ?>

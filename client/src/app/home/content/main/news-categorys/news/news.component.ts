@@ -12,21 +12,24 @@ export class NewsComponent implements OnInit {
   id: Number;
   news;
   title: String;
-  constructor(private route: ActivatedRoute, private newsCategoryService: NewsCategorysService) { 
-    // lấy tham số id
-    route.params.subscribe( params => {
-      this.id = params.id;
-      console.log(params.id)
-    });
-    // Lấy danh sách tin tức
-    newsCategoryService.getNews(this.id)
-    .then(news => {
-      this.news = news;
-      console.log(news);
-    })
-  }
+  constructor(private route: ActivatedRoute, private newsCategoryService: NewsCategorysService) {}
 
   ngOnInit() {
+
+    // lấy tham số id
+    this.route.params.subscribe( params => {
+      this.id = params.id;
+    });
+    
+    this.newsCategoryService.updateView(this.id)
+    .then( () => {
+      // Lấy danh sách tin tức
+      this.newsCategoryService.getNews(this.id)
+      .then(news => {
+        this.news = news;
+      })
+    })
+    
   }
 
 }

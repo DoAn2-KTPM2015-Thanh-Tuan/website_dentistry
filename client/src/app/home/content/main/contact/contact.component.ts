@@ -2,17 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { } from '@types/googlemaps';
 import { ContactService } from '../../../shared/services/contact.service';
+import { InfoWebsiteService } from '../../../shared/services/info-website.service';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  
+  // data server
+  name_website: String;
+  link_facebook: String;
+  link_youtube: String;
+  email: String;
+  address;
+  phone_number: String;
+  logo: String;
+
+
   // thông báo khi gửi thành công
   alertSuccess: boolean = false;
 
-  constructor(private contactService: ContactService) {}
+  constructor(private contactService: ContactService,
+              private infoWebsiteService: InfoWebsiteService) {}
   @ViewChild('gmap') gmapElement: any;
   map: google.maps.Map;
 
@@ -34,6 +45,46 @@ export class ContactComponent implements OnInit {
     });
     Marker.setMap(this.map);
 
+    // lấy thông tin website
+
+    this.infoWebsiteService.getInfoWebsite()
+    .then( res => { res.forEach(element => {
+      let name: any = element.name;
+      switch(name){
+        case 'name_website': 
+          this.name_website = element.value;
+          break;
+
+        case 'link_facebook': 
+          this.link_facebook = element.value;
+          break;
+
+        case 'link_youtube': 
+          this.link_youtube = element.value;
+          break;
+
+        case 'email': 
+          this.email = element.value;
+          break;
+
+        case 'address': 
+          
+          this.address = element.value;
+          console.log(this.address);
+          break;
+
+        case 'phone_number': 
+          this.phone_number = element.value;
+          break;
+        
+        case 'link_img': 
+          this.logo = element.value;
+          break;
+      }
+       
+    })
+    
+   }) //
   }
 
   setMapType(mapTypeId: string) {

@@ -15,6 +15,27 @@ export class RegistrationService {
     .then(res => res.json())
   }
 
+  // lấy tất cả danh sách đăng kí khám chưa xem
+  getListRegistraionNotsee(){
+    return this.http.get(AppSettings.API_ENDPOINT + '/dashboard/registration/get-list-registration-notsee.php')
+    .toPromise()
+    .then(res => res.json())
+  }
+
+  // cập nhật trang thái đã xem
+  updateStatusRegistration(id){
+    return this.http.get(AppSettings.API_ENDPOINT + '/dashboard/registration/update-status-registration.php?id=' + id)
+    .toPromise()
+    .then(res => res.text())
+  }
+
+  // cập nhật trang thái đã xem ( tất cả )
+  updateStatusAllRegistration (){
+    return this.http.get(AppSettings.API_ENDPOINT + '/dashboard/registration/update-status-all-registration.php')
+    .toPromise()
+    .then(res => res.text())
+  }
+
   // xóa đăng kí khám theo id
   deleteRegistration(id: any){
     return this.http.get(AppSettings.API_ENDPOINT + '/dashboard/registration/detele-registration.php?id=' + id)

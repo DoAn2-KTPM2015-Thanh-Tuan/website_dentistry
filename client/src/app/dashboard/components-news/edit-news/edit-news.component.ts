@@ -3,6 +3,7 @@ import { SlideInOutAnimation } from '../../shared/animate/slide-down';
 import { NewsService } from '../../shared/services/news.service';
 import { CategoryNewsService } from '../../shared/services/category-news.service';
 import { ActivatedRoute } from '@angular/router';
+import { AuthCustomerService } from '../../../home/shared/gruads/auth-customer.service';
 @Component({
   selector: 'app-edit-news',
   templateUrl: './edit-news.component.html',
@@ -13,9 +14,16 @@ export class EditNewsComponent implements OnInit {
 
   constructor(private newsService: NewsService, 
               private categoryNews: CategoryNewsService,
-              private router: ActivatedRoute) { }
+              private router: ActivatedRoute,
+              private authService: AuthCustomerService) { }
   // id tin tức
   id_news: any;
+
+  // id account
+  id_account;
+
+  // type account
+  type_account;
 
   // nội dung tin tức
   dataNews: any;
@@ -78,11 +86,10 @@ export class EditNewsComponent implements OnInit {
         formData.append('file', this.file_data);
         formData.append('category', formAddNews.value.category);
         formData.append('status', formAddNews.value.status);
-        formData.append('idUser', '1');
+        formData.append('idUser', this.id_account);
 
         this.newsService.edit_news(formData)
         .then( res => {
-          console.log(res);
           alert("Cập nhật thành công !!");
         });
         
@@ -135,6 +142,12 @@ export class EditNewsComponent implements OnInit {
   }
   
   ngOnInit() {
+    // lấy id account đăng nhập
+    this.id_account = this.authService.authInfo$.getValue().$uid;
+
+    // lấy type account đăng nhập
+    this.type_account = this.authService.authInfo$.getValue().$type_account;
+
     // lấy id in tin tức
     this.id_news = this.router.snapshot.paramMap.get('id');
     

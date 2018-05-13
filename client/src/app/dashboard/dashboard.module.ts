@@ -55,6 +55,7 @@ import { ShowContactComponent } from './components-contact/show-contact/show-con
 import { SearchContactPipe } from './shared/pipes/search-contact.pipe';
 import { SeeContactComponent } from './components-contact/see-contact/see-contact.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -108,6 +109,8 @@ import { SeeContactComponent } from './components-contact/see-contact/see-contac
     AccountService, 
     InfoWebsiteService, 
     ImageAdvertisementService, 
-    WorkingCalendarService, RegistrationService, DoctorService]
+    WorkingCalendarService,
+    RegistrationService, 
+    DoctorService]
 })
 export class DashboardModule { }

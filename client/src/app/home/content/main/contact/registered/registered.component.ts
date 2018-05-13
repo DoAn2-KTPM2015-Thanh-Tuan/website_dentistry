@@ -48,7 +48,7 @@ export class RegisteredComponent implements OnInit {
         formDataSending.append('time', formData.value.time);
         formDataSending.append('content', this.content);
         formDataSending.append('id_doctor', this.id_doctoc);
-
+        formDataSending.append('status', '0');
         return formDataSending;
       })
       .then( (formDataSending) => {

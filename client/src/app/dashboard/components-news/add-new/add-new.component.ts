@@ -2,7 +2,8 @@ import { Component, OnInit} from '@angular/core';
 import { SlideInOutAnimation } from '../../shared/animate/slide-down';
 import { NewsService } from '../../shared/services/news.service';
 import { CategoryNewsService } from '../../shared/services/category-news.service';
-
+import { AuthCustomerService } from '../../../home/shared/gruads/auth-customer.service';
+import { AccountService } from '../../shared/services/account.service';
 @Component({
   selector: 'app-add-new',
   templateUrl: './add-new.component.html',
@@ -11,7 +12,16 @@ import { CategoryNewsService } from '../../shared/services/category-news.service
 })
 export class AddNewComponent implements OnInit {
 
-  constructor(private newsService: NewsService, private categoryNews: CategoryNewsService) { }
+  constructor(private newsService: NewsService, 
+              private categoryNews: CategoryNewsService,
+              private authService: AuthCustomerService,
+              private accountService: AccountService) { }
+
+  // id_account đăng nhập
+  id_account;
+  // type account người dùng đăng nhập
+  type_account;
+
   listCategoryNews;
   // Status
   chosenOption: string = '0';
@@ -113,6 +123,15 @@ export class AddNewComponent implements OnInit {
   }
   
   ngOnInit() {
+    // lấy id account
+    this.id_account = this.authService.authInfo$.getValue().$uid;
+    // lấy type_accoumt
+    this.type_account = this.authService.authInfo$.getValue().$type_account;
+
+    // tủy chỉnh option xét duyện 
+    this.chosenOption = this.type_account == 1 ? '1' : '0';
+
+
     // Lấy danh sách loại tin tức
     this.categoryNews.getAllCategory()
     .then(res => this.listCategoryNews = res )

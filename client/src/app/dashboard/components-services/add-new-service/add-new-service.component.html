@@ -109,7 +109,7 @@
               <div class="icon"><i class="fa fa-key"></i></div>
               <div class="text">Trạng thái: <span class="text-bold">
                 {{ chosenOption == 0 ? 'Chờ xét duyệt' : 'Đã xét duyệt' }}
-                </span> <a class="edit" (click)="toggleShowDiv()">Chỉnh sửa</a>
+                </span> <a class="edit" (click)="toggleShowDiv()" *ngIf="type_account == '1'">Chỉnh sửa</a>
               </div>
               <!-- box-option  -->
               <div id="box-option" role="tabpanel" class="wrap-box-option d-flex mt-2" [@slideInOut]="animationState">
@@ -125,12 +125,6 @@
                 <div class="cancel d-flex align-items-center ml-1" (click)="animationState='out'">Hủy</div> 
               </div>
             </div>
-            <!-- item -->
-            <div class="item d-flex text-small flex-wrap">
-              <div class="icon"><i class="fa fa-key"></i></div>
-              <div class="text">Người viết bài: <span class="text-bold">Lê Thanh Tuấn</span></div>
-            </div>
-          <!-- end item -->
             <div class="wrap-btn text-right">
               <button class="btn btn-primary">Đăng</button>
             </div>

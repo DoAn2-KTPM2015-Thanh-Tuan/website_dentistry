@@ -2,7 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { SlideInOutAnimation } from '../../shared/animate/slide-down';
 import { ServiceService } from '../../shared/services/service.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { AuthCustomerService } from '../../../home/shared/gruads/auth-customer.service';
 @Component({
   selector: 'app-edit-service',
   templateUrl: './edit-service.component.html',
@@ -13,9 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 export class EditServiceComponent implements OnInit {
 
   constructor(private serviceService: ServiceService, 
-              private router: ActivatedRoute) { }
+              private router: ActivatedRoute,
+              private authSevice: AuthCustomerService) { }
   // id dịch vụ
   id_service: any;
+
+  // id_account người dùng đăng nhập
+  id_account;
 
   // nội dung dịch vụ
   dataService: any;
@@ -59,7 +63,6 @@ export class EditServiceComponent implements OnInit {
   
   onSubmit(formAddService){
 
-    console.log(formAddService)
       // nếu form đã điền đủ thông tin
       if( formAddService.valid ){
         const formData = new FormData();
@@ -67,7 +70,6 @@ export class EditServiceComponent implements OnInit {
         // Kiem tra file img 
         if (this.file_data == null) {
             this.file_data  = this.linkDefaultImg;
-            console.log(this.file_data, null);
         }
 
         // data send to server
@@ -77,16 +79,16 @@ export class EditServiceComponent implements OnInit {
         formData.append('describe_service', formAddService.value.textNews);
         formData.append('file', this.file_data);
         formData.append('status', formAddService.value.status);
-        formData.append('idUser', '1');
+        formData.append('idUser', this.id_account);
 
         this.serviceService.edit_service(formData)
         .then( res => {
-          console.log(res);
+
           alert("Cập nhật thành công !!");
         });
         
       } else {
-        console.log(formAddService)
+        console.log('! submit')
       }
     
   
@@ -116,6 +118,8 @@ export class EditServiceComponent implements OnInit {
 
   
   ngOnInit() {
+    // lấy id account người dùng đăng nhập
+    this.id_account = this.authSevice.authInfo$.getValue().$uid;
     // lấy id in tin tức
     this.id_service = this.router.snapshot.paramMap.get('id');
     
@@ -128,9 +132,6 @@ export class EditServiceComponent implements OnInit {
       this.linkDefaultImg = this.dataService[0].image_service;
       // cập nhật trạng thái
       this.chosenOption = this.dataService[0].status;
-    } )
-    .then( () => {
-      console.log(this.dataService)
     } ); 
 
   }

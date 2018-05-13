@@ -30,6 +30,31 @@ export class ContactService {
     .then(res => res.text())
   }
 
+  // lấy danh sách liên hệ chưa xem 
+  getListContactNotsee(){
+    return this.http.get(AppSettings.API_ENDPOINT + '/home/contact/get-list-contact-notsee.php')
+    .toPromise()
+    .then(res => res.json())
+  }
+
+  updateStatusContact(id) {
+    return this.http.get(AppSettings.API_ENDPOINT + '/home/contact/update-status-contact.php?id=' + id)
+    .toPromise()
+    .then(res => res.text())
+  }
+
+
+  getContact(id){
+    return this.http.get(AppSettings.API_ENDPOINT + '/home/contact/get-contact.php?id=' + id)
+    .toPromise()
+    .then(res => res.json())
+  }
+
+  updateStatusAllContact(){
+    return this.http.get(AppSettings.API_ENDPOINT + '/home/contact/update-status-all-contact.php')
+    .toPromise()
+    .then(res => res.text())
+  }
 
 
 }

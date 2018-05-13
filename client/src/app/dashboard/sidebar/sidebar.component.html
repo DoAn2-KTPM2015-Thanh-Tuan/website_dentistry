@@ -4,12 +4,13 @@
       <!-- Sidebar Header    -->
       <div class="sidenav-header d-flex align-items-center justify-content-center">
         <!-- User Info-->
-        <div class="sidenav-header-inner text-center"><img src="{{info_account.image_user}}" alt="{{info_account.name_user}}" class="img-fluid rounded-circle">
-          <h2 class="h5">{{info_account.name_user}}</h2><span>Web Developer</span>
+        <div class="sidenav-header-inner text-center"><img src="{{image_user}}" alt="{{name_user}}" class="img-fluid rounded-circle">
+          <h2 class="h5">{{name_user}}</h2>
+          <!-- <span>Web Developer</span> -->
         </div>
         <!-- Small Brand information, appears on minimized sidebar-->
         <div class="sidenav-header-logo"><a href="index.html" class="brand-small text-center">
-          <img src="{{info_account.image_user}}" alt="{{info_account.name_user}}" class="img-fluid rounded-circle"></a>
+          <img src="{{image_user}}" alt="{{name_user}}" class="img-fluid rounded-circle"></a>
         </div>
       </div>
       <!-- Sidebar Navigation Menus-->
@@ -39,7 +40,7 @@
          <!-- end services -->
          
         <!-- registration -->
-        <li>
+        <li *ngIf="!(type_user == '3')">
           <a href="#order" aria-expanded="false" data-toggle="collapse"><i class="fa fa-stethoscope"></i>Các yêu cầu</a>
           <ul id="order" class="collapse list-unstyled ">
             <li routerLinkActive="active"><a routerLink="/dashboard/show-registration">Danh sách đặt lịch khám</a></li>
@@ -49,7 +50,7 @@
         <!-- end registration -->
 
          <!-- account -->
-          <li>
+          <li *ngIf="type_user == '1'">
               <a href="#account" aria-expanded="false" data-toggle="collapse"><i class="fa fa-stethoscope"></i>Tài khoản</a>
               <ul id="account" class="collapse list-unstyled ">
                 <li routerLinkActive="active"><a routerLink="/dashboard/show-all-user">Tất cả tài khoản</a></li>
@@ -57,7 +58,7 @@
               </ul>
           </li>
           <!-- info-website -->
-          <li>
+          <li *ngIf="type_user == '1'">
               <a href="#info-website" aria-expanded="false" data-toggle="collapse"><i class="fa fa-info-circle"></i>Thông tin website</a>
               <ul id="info-website" class="collapse list-unstyled ">
                 <li routerLinkActive="active"><a routerLink="/dashboard/introduce-website">Giới thiệu</a></li>
@@ -66,7 +67,7 @@
           </li>
 
           <!-- Hình ảnh -->
-          <li>
+          <li *ngIf="type_user == '1'">
             <a href="#images" aria-expanded="false" data-toggle="collapse"><i class="fa fa-picture-o"></i>Hình ảnh</a>
             <ul id="images" class="collapse list-unstyled ">
               <li routerLinkActive="active"><a routerLink="/dashboard/slider">Slider</a></li>
@@ -76,7 +77,9 @@
 
 
           <!--lịch khám -->
-          <li routerLinkActive="active"><a routerLink="/dashboard/update-working-calendar"><i class="fa fa-calendar"></i>Cập nhật lịch khám</a></li>
+          <li routerLinkActive="active" *ngIf="type_user == '3'">
+            <a routerLink="/dashboard/update-working-calendar"><i class="fa fa-calendar"></i>Cập nhật lịch khám</a>
+          </li>
 
           <!-- lịch khám của các bác sĩ -->
           <li routerLinkActive="active"><a routerLink="/dashboard/show-all-working-calendar-doctors"><i class="fa fa-bookmark-o"></i>Lịch khám phòng nha</a></li>

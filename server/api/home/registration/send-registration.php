@@ -10,7 +10,7 @@
 	$time = $_POST['time'];
 	$content = $_POST['content'];
 	$id_doctor = $_POST['id_doctor'];
-
-
+	$status = $_POST['status'];
+	date_default_timezone_set("Asia/HO_CHI_MINH");
 	
-	echo sendRegistration($name, $email, $phone, $address, $date, $time, $content, $id_doctor);
+	echo sendRegistration($name, $email, $phone, $address, $date, $time, $content, $id_doctor, $status, date("Y-m-d  H:i:s"));

@@ -38,7 +38,8 @@
         "../node_modules/slick-carousel/slick/slick.min.js",
         "../node_modules/wow.js/dist/wow.min.js",
         "../node_modules/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js",
-        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
+        "./assets/js/dashboard.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
