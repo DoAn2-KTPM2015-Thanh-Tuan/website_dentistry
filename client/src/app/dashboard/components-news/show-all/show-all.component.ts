@@ -17,8 +17,8 @@ export class ShowAllComponent implements OnInit {
   stt:Number = 0;
 
   //sorting
-  key: string = 'status'; //set default
-  reverse: boolean = false;
+  key: string = 'time_news'; //set default
+  reverse: boolean = true;
   sort(key){
     if( this.key == key ) {
       this.reverse = !this.reverse;

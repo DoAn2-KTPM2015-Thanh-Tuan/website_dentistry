@@ -31,10 +31,14 @@ export class AuthCustomerService {
       // this.authInfo$.next(authInfo);
       // 
       // tên biến hơi sai sai :D
-      const authInfo = new AuthInfo(true);
-      this.isLogin$.next(authInfo);
-
-      localStorage.setItem('currentUser', JSON.stringify(resJson));
+      
+      if( resJson != false ) {     
+        console.log(resJson);
+        localStorage.setItem('currentUser', JSON.stringify(resJson));
+        const authInfo = new AuthInfo(true);
+        this.isLogin$.next(authInfo);
+      }
+      
       
       return resJson;
     })

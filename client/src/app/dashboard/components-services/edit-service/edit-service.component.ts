@@ -21,6 +21,8 @@ export class EditServiceComponent implements OnInit {
   // id_account người dùng đăng nhập
   id_account;
 
+  type_account;
+
   // nội dung dịch vụ
   dataService: any;
   
@@ -120,6 +122,10 @@ export class EditServiceComponent implements OnInit {
   ngOnInit() {
     // lấy id account người dùng đăng nhập
     this.id_account = JSON.parse(localStorage.getItem('currentUser')).id_account;
+
+    // lấy type account đăng nhập
+    this.type_account = JSON.parse(localStorage.getItem('currentUser')).type_account;
+    
     // lấy id in tin tức
     this.id_service = this.router.snapshot.paramMap.get('id');
     

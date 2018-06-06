@@ -34,19 +34,32 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    // // lấy thông tin khách hàng đăng nhập
-    this.Info = JSON.parse(localStorage.getItem('currentUser'));
-    this.isLogin = this.Info ? true : false; 
-      
+    
+   
+
     this.auth.isLogin$.subscribe(isLoginAuthen => {
       this.isLogin = this.auth.isLogin$.getValue().$isLogin;
-    })    
-     if( this.isLogin ) {
+      this.Info = JSON.parse(localStorage.getItem('currentUser'));
+      if( this.isLogin ) {
         // lấy thông tin khách hàng đăng nhập
         this.id_account = this.Info.id_account;
         this.account.getAccount(this.id_account)
         .then( res => { this.info_account = res[0]; } )
      }
+      
+    }) 
+    
+    // // lấy thông tin khách hàng đăng nhập
+    this.Info = JSON.parse(localStorage.getItem('currentUser'));
+    
+    this.isLogin = this.Info != null ? true : false; 
+
+    if( this.isLogin ) {
+      // lấy thông tin khách hàng đăng nhập
+      this.id_account = this.Info.id_account;
+      this.account.getAccount(this.id_account)
+      .then( res => { this.info_account = res[0]; } )
+    }
       
       // lấy thông tin website
 

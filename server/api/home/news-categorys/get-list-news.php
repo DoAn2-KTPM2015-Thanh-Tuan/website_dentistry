@@ -8,7 +8,7 @@ $condition = "id_category" . "=" . $id_category;
 $title = get_data('tb_news_category', $condition)[0]['name_category'];
 
 $children = array();
-$condition = "tb_account.id_account = tb_news.id_account AND id_news_category" . "=" . $id_category;
+$condition = "tb_account.id_account = tb_news.id_account AND id_news_category" . "=" . $id_category . " AND status = 1";
 foreach (get_data('tb_news, tb_account', $condition) as $row) {
 	$children[] = $row;
 }

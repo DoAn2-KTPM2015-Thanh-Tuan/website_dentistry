@@ -8,7 +8,7 @@ $data = array();
 // lấy ra tin tức thuộc từng loại
 foreach (get_all("tb_news_category") as $row) {
     $children = array();
-    $condition = "id_news_category"."=".$row['id_category'];
+    $condition = "id_news_category"."=".$row['id_category']  . " AND status = '1'";
     foreach(get_data("tb_news", $condition) as $row_news){
         $children[] = $row_news;
     }

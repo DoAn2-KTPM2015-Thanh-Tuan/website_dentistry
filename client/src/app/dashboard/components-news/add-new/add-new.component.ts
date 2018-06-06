@@ -69,7 +69,7 @@ export class AddNewComponent implements OnInit {
         formData.append('file', this.file_data);
         formData.append('category', formAddNews.value.category);
         formData.append('status', formAddNews.value.status);
-        formData.append('idUser', '1');
+        formData.append('idUser', this.id_account);
 
         this.newsService.insert_news(formData)
         .then( res => {

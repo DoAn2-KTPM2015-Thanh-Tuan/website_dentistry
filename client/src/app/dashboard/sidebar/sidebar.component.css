@@ -287,3 +287,7 @@
       display: none;
     }
   }
+  /* custom (tuấn) */
+  .mCSB_inside > .mCSB_container{
+    margin-right: 0;
+  }
