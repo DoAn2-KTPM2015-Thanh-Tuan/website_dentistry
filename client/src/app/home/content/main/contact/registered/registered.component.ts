@@ -25,7 +25,9 @@ export class RegisteredComponent implements OnInit {
   }
   onSubmit(formData){
 
-    if(formData.valid){
+    if(new Date(formData.value.date) < new Date()){
+      alert("Thời gian không hợp lệ");
+    } else if(formData.valid){
       // lấy thứ của ngày khám
       let date = new Date(formData.value.date);
       let day = date.getDay();

@@ -33,41 +33,41 @@ export class FooterComponent implements OnInit {
       // lấy thông tin website
 
       this.infoWebsiteService.getInfoWebsite()
-      .then( res => { res.forEach(element => {
-        let name: any = element.name;
+        .then( res => { res.forEach(element => {
+          let name: any = element.name;
 
-        switch(name){
-          case 'name_website': 
-            this.name_website = element.value;
-            break;
+          switch(name){
+            case 'name_website': 
+              this.name_website = element.value;
+              break;
 
-          case 'link_facebook': 
-            this.link_facebook = element.value;
-            break;
+            case 'link_facebook': 
+              this.link_facebook = element.value;
+              break;
 
-          case 'link_youtube': 
-            this.link_youtube = element.value;
-            break;
+            case 'link_youtube': 
+              this.link_youtube = element.value;
+              break;
 
-          case 'email': 
-            this.email = element.value;
-            break;
+            case 'email': 
+              this.email = element.value;
+              break;
 
-          case 'address': 
-            this.address = element.value;
-            break;
+            case 'address': 
+              this.address = element.value;
+              break;
 
-          case 'phone_number': 
-            this.phone_number = element.value;
-            break;
+            case 'phone_number': 
+              this.phone_number = element.value;
+              break;
+            
+            case 'link_img': 
+              this.logo = element.value;
+              break;
+          }
           
-          case 'link_img': 
-            this.logo = element.value;
-            break;
-        }
-         
-      });
-     })
+        });
+      })
 
 
       

@@ -5,8 +5,8 @@
     /* kiểm tra có hình ảnh không */
     if ( isset($_FILES['file']) ) {
         // chuyển file ảnh vào folder img
-        $img = str_replace(" ","",$_FILES['file']['name']);
-        $link_img = "assets/img/" . $img;
+        $img = $_FILES['file']['name'];
+        $link_img = "/assets/img/" . $img;
         move_uploaded_file( $_FILES['file']['tmp_name'], "../../../../client/src/assets/img/" . $img);
     }
      else {

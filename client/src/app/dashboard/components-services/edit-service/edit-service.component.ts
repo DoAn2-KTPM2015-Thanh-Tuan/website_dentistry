@@ -119,7 +119,7 @@ export class EditServiceComponent implements OnInit {
   
   ngOnInit() {
     // lấy id account người dùng đăng nhập
-    this.id_account = this.authSevice.authInfo$.getValue().$uid;
+    this.id_account = JSON.parse(localStorage.getItem('currentUser')).id_account;
     // lấy id in tin tức
     this.id_service = this.router.snapshot.paramMap.get('id');
     

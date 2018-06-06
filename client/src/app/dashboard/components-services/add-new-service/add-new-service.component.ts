@@ -98,9 +98,9 @@ export class AddNewServiceComponent implements OnInit {
   ngOnInit() {
    
     // lấy id người dùng đăng nhập
-    this.id_account = this.authSevice.authInfo$.getValue().$uid;
+    this.id_account = JSON.parse(localStorage.getItem('currentUser')).id_account;
     // lấy type account người dùng đăng nhập
-    this.type_account = this.authSevice.authInfo$.getValue().$type_account;
+    this.type_account = JSON.parse(localStorage.getItem('currentUser')).type_account;
   }
 
 }

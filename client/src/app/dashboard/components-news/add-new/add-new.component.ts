@@ -124,9 +124,9 @@ export class AddNewComponent implements OnInit {
   
   ngOnInit() {
     // lấy id account
-    this.id_account = this.authService.authInfo$.getValue().$uid;
+    this.id_account = JSON.parse(localStorage.getItem('currentUser')).id_account;
     // lấy type_accoumt
-    this.type_account = this.authService.authInfo$.getValue().$type_account;
+    this.type_account = JSON.parse(localStorage.getItem('currentUser')).type_account;
 
     // tủy chỉnh option xét duyện 
     this.chosenOption = this.type_account == 1 ? '1' : '0';

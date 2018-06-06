@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthCustomerService } from '../../../shared/gruads/auth-customer.service';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/toPromise';
+// import { join } from 'path';
 
 @Component({
   selector: 'app-login',
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
       } else {
         // kiểm tra loại tài khoản
 
-        let type_account:Number = this.auth.authInfo$.getValue().$type_account;
+        let type_account:Number = JSON.parse(localStorage.getItem('currentUser')).type_account;
 
         // khách hàng
         if(type_account == 4){

@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   
       
   ngOnInit() {
-    this.type_account = this.authService.authInfo$.getValue().$type_account;
+    this.type_account = JSON.parse(localStorage.getItem('currentUser')).type_account;
   
     var getRegistrationNotSee = () => {
       // lấy danh sách đăng kí khám

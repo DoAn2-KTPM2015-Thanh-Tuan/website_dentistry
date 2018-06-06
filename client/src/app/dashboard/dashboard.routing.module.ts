@@ -25,12 +25,17 @@ import { ShowRegistrationComponent } from './components-registration/show-regist
 import { EditRegistrationComponent } from './components-registration/edit-registration/edit-registration.component';
 import { ShowContactComponent } from './components-contact/show-contact/show-contact.component';
 import { SeeContactComponent } from './components-contact/see-contact/see-contact.component';
+import { MainComponent } from './main/main.component';
 const routes: Routes = [
     {
         path: 'dashboard',
         component: DashboardComponent,
-        // canActivate: [AuthCustomerGuard],
+        canActivate: [AuthCustomerGuard],
         children: [
+            {
+                path:'',
+                component: MainComponent
+            },
             // news
             {
                 path:'add-news',

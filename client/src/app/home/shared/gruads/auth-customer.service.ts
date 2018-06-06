@@ -9,10 +9,10 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class AuthCustomerService {
 
-  static UNKNOWN_USER = new AuthInfo(null, null, null, null);
+  // static UNKNOWN_USER = new AuthInfo(null, null, null, null);
 
-  authInfo$: BehaviorSubject<AuthInfo> = new BehaviorSubject<AuthInfo>(AuthCustomerService.UNKNOWN_USER);
-
+  // authInfo$: BehaviorSubject<AuthInfo> = new BehaviorSubject<AuthInfo>(AuthCustomerService.UNKNOWN_USER);
+  isLogin$: BehaviorSubject<AuthInfo> = new BehaviorSubject<AuthInfo>(new AuthInfo(false));
   constructor(
             private http: Http,
             private router: Router) { }
@@ -22,13 +22,19 @@ export class AuthCustomerService {
     let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
     let options = new RequestOptions({ headers: headers, method: "post"});
     
-    const subject = new Subject<any>();
+    // const subject = new Subject<any>();
     return this.http.post(AppSettings.API_ENDPOINT + '/home/login/login.php', {'account': account, 'passwd': passwd}, options)
     .toPromise()
     .then(res => res.json())
     .then( resJson => {
-      const authInfo = new AuthInfo(resJson.id_account, resJson.name_user, resJson.image_user, resJson.type_account);
-      this.authInfo$.next(authInfo);
+      // const authInfo = new AuthInfo(resJson.id_account, resJson.name_user, resJson.image_user, resJson.type_account);
+      // this.authInfo$.next(authInfo);
+      // 
+      // tên biến hơi sai sai :D
+      const authInfo = new AuthInfo(true);
+      this.isLogin$.next(authInfo);
+
+      localStorage.setItem('currentUser', JSON.stringify(resJson));
       
       return resJson;
     })
@@ -37,8 +43,12 @@ export class AuthCustomerService {
 
   // đăng xuất 
   logout(){
-    const authInfo = new AuthInfo(null, null, null, null);
-    this.authInfo$.next(authInfo);
+    // const authInfo = new AuthInfo(null, null, null, null);
+    // this.authInfo$.next(authInfo);
+    // 
+    const authInfo = new AuthInfo(null);
+    this.isLogin$.next(authInfo);
+    localStorage.removeItem('currentUser');
     this.router.navigate(['/login']);
   }
 

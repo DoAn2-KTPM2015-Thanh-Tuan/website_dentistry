@@ -1,13 +1,16 @@
 export class AuthInfo{
-    constructor(
-        public $uid:string,
-        public $name_user:string,
-        public $image_user:string,
-        public $type_account: Number
-    ) {}
+    constructor(public $isLogin: boolean){}
 
-    IsLogin() {
-        return !!this.$uid;
-    }
+    // constructor(
+    //     public $uid:string,
+    //     public $name_user:string,
+    //     public $image_user:string,
+    //     public $type_account: Number
+
+    // ) {}
+
+    // IsLogin() {
+    //     return !!this.$uid;
+    // }
 
 }

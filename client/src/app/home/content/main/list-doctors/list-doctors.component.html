@@ -7,7 +7,7 @@
         <div class="col-12 col-md-6 col-xl-4 doctor wow zoomIn" *ngFor="let doctor of listDoctors">
             <div class="wrap-doctor">
                 <figure>
-                    <img [src]="doctor.image_user" alt="" width="100%">
+                    <img src={{doctor.image_user}} alt="" width="100%">
                 </figure>
                 <div class="name">
                     Bs. {{doctor.name_user}}

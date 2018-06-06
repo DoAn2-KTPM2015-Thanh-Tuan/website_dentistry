@@ -35,7 +35,7 @@ export class RegistrationComponent implements OnInit {
     .then( res => this.working_calendar = res )
     
     // lấy id tài khoản
-    let id_customer = this.auth.authInfo$.getValue().$uid;
+    let id_customer = JSON.parse(localStorage.getItem('currentUser')).id_account;
 
     // lấy thông tin khách hàng
     this.account.getAccount(id_customer)

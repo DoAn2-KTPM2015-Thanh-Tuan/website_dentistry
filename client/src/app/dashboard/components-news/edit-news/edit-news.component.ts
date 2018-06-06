@@ -143,10 +143,10 @@ export class EditNewsComponent implements OnInit {
   
   ngOnInit() {
     // lấy id account đăng nhập
-    this.id_account = this.authService.authInfo$.getValue().$uid;
+    this.id_account = JSON.parse(localStorage.getItem('currentUser')).id_account;
 
     // lấy type account đăng nhập
-    this.type_account = this.authService.authInfo$.getValue().$type_account;
+    this.type_account = JSON.parse(localStorage.getItem('currentUser')).type_account;
 
     // lấy id in tin tức
     this.id_news = this.router.snapshot.paramMap.get('id');

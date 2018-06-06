@@ -17,7 +17,7 @@ export class MyAccountInfoComponent implements OnInit {
     private registerService: RegisterUserService) { }
 
   ngOnInit() {
-    this.uid = this.auth.authInfo$.getValue().$uid;
+    this.uid = JSON.parse(localStorage.getItem('currentUser')).id_account;
     // lấy thông tin tài khoản
     this.account.getAccount(this.uid)
     .then(res => this.infoCustommer = res);

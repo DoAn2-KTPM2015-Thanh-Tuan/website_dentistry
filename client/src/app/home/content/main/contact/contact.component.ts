@@ -14,7 +14,7 @@ export class ContactComponent implements OnInit {
   link_facebook: String;
   link_youtube: String;
   email: String;
-  address;
+  address: String;
   phone_number: String;
   logo: String;
 
@@ -68,7 +68,6 @@ export class ContactComponent implements OnInit {
           break;
 
         case 'address': 
-          
           this.address = element.value;
           console.log(this.address);
           break;

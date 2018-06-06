@@ -54,6 +54,7 @@ import { DoctorService } from './shared/services/doctor.service';
 import { ShowContactComponent } from './components-contact/show-contact/show-contact.component';
 import { SearchContactPipe } from './shared/pipes/search-contact.pipe';
 import { SeeContactComponent } from './components-contact/see-contact/see-contact.component';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import { SeeContactComponent } from './components-contact/see-contact/see-contac
     EditRegistrationComponent,
     ShowContactComponent,
     SearchContactPipe,
-    SeeContactComponent
+    SeeContactComponent,
+    MainComponent
   ],
   providers: [AuthCustomerGuard, 
     NewsService, 

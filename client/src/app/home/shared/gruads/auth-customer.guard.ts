@@ -9,7 +9,8 @@ export class AuthCustomerGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    if (!this.auth.authInfo$.getValue().IsLogin()) {
+      // !this.auth.authInfo$.getValue().IsLogin() && 
+    if (!localStorage.getItem('currentUser') ){
       this.router.navigate(['/login']);
       return false;
     }

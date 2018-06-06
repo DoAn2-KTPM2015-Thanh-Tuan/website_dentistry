@@ -15,7 +15,7 @@ export class PasswordChangingComponent implements OnInit {
   constructor(private auth: AuthCustomerService) { }
 
   ngOnInit() {
-    this.id_account = this.auth.authInfo$.getValue().$uid;
+    this.id_account = JSON.parse(localStorage.getItem('currentUser')).id_account;
   }
 
   onSubmit(formData){

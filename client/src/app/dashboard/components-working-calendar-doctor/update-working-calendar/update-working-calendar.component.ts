@@ -15,8 +15,8 @@ export class UpdateWorkingCalendarComponent implements OnInit {
     private auth: AuthCustomerService) { }
     
   ngOnInit() {
-    this.id_doctor = this.auth.authInfo$.getValue().$uid;
     
+    this.id_doctor = JSON.parse(localStorage.getItem('currentUser')).id_account;
     this.workingCalendarService.getWorkingCalendarDoctor(this.id_doctor)
     .then(res => {this.working_calendar = res; console.log(this.working_calendar)})
 
