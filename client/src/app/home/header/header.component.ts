@@ -10,7 +10,7 @@ import { AccountService } from '../../dashboard/shared/services/account.service'
 export class HeaderComponent implements OnInit {
   // hiện thị option
   isShow: boolean = false;
-
+  
   Info: any;
   isLogin: boolean;
 
@@ -34,10 +34,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
 
-    
-   
-
     this.auth.isLogin$.subscribe(isLoginAuthen => {
+      this.isShow = false;
+      console.log(this.isShow)
+
       this.isLogin = this.auth.isLogin$.getValue().$isLogin;
       this.Info = JSON.parse(localStorage.getItem('currentUser'));
       if( this.isLogin ) {
@@ -105,6 +105,7 @@ export class HeaderComponent implements OnInit {
 
   // đăng xuất
   logOut() {
+    this.isShow = false;
     this.auth.logout();
   }
 
